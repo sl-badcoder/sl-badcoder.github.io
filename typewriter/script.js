@@ -13,7 +13,7 @@ const typedValueElement = document.getElementById('typed-value')
 
 document.getElementById('start').addEventListener('click', () => {
     const quoteIndex = Math.floor(Math.random() * quotes.length);
-    const quote = quoets[quoteIndex];
+    const quote = quotes[quoteIndex];
 
     words = quote.split(' ');
     wordIndex = 0;
