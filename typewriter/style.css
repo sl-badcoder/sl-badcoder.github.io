@@ -1,8 +1,13 @@
 
 .highlight {
-    background-color: yellow;
+    background-color:lightblue;
+    color: black;
 }
 .error {
     background-color: lightcoral;
     border: red;
+}
+html {
+    background-color: darkgray;
+    color: white;
 }
