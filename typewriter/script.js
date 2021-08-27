@@ -1,4 +1,4 @@
-const quote = [
+const quotes = [
     'A life portfolio offers a compelling alternative to traditional retirement. It is a new way of thinking and living in extended middle age. A typical portfolio is a balanced mix of some work, ongoing learning, recreation, travel and avocations, reconnecting with family and friends, and giving back.',
     'We have three roles here on earth: to learn, to love, and to live. When we stop learning, we start to stagnate and die. When we stop loving, we lose our sense of purpose and become self-centered. When we limit our living, we deny the world the benefits of our talents.',
     'Simplicity requires a two-step process. First, we must invest time and energy to discover what stirs us as human beings, what makes our hearts sing, and what brings us joy. Then, we must proceed to create the life that reflects the unique people we truly are. This is the heart and soul of simplicity.',
@@ -8,7 +8,7 @@ const quote = [
 
 
 ];
-const quotes = ['test',];
+const quote = ['test',];
 
 let words = [];
 let wordIndex = 0;
