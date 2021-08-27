@@ -1,4 +1,4 @@
-const quotes = [
+const quote = [
     'A life portfolio offers a compelling alternative to traditional retirement. It is a new way of thinking and living in extended middle age. A typical portfolio is a balanced mix of some work, ongoing learning, recreation, travel and avocations, reconnecting with family and friends, and giving back.',
     'We have three roles here on earth: to learn, to love, and to live. When we stop learning, we start to stagnate and die. When we stop loving, we lose our sense of purpose and become self-centered. When we limit our living, we deny the world the benefits of our talents.',
     'Simplicity requires a two-step process. First, we must invest time and energy to discover what stirs us as human beings, what makes our hearts sing, and what brings us joy. Then, we must proceed to create the life that reflects the unique people we truly are. This is the heart and soul of simplicity.',
@@ -8,6 +8,7 @@ const quotes = [
 
 
 ];
+const quotes = ['test',];
 
 let words = [];
 let wordIndex = 0;
@@ -17,6 +18,7 @@ let startTime = Date.now()
 const quoteElement = document.getElementById('quote')
 const messageElement = document.getElementById('message')
 const typedValueElement = document.getElementById('typed-value')
+const WPMElement = document.getElementById('WPM')
 
 document.getElementById('start').addEventListener('click', () => {
     const quoteIndex = Math.floor(Math.random() * quotes.length);
@@ -35,13 +37,17 @@ document.getElementById('start').addEventListener('click', () => {
     quoteElement.innerHTML = spanWords.join('');
 
     quoteElement.childNodes[0].className = 'highlight';
+    //reset texts
     messageElement.innerText = '';
+    WPMElement.innerText = '';
 
     typedValueElement.value = '';
 
     typedValueElement.focus();
 
     startTime = new Date().getTime();
+    var el = document.getElementById('start');
+    el.firstChild.data = 'RESTART';
 
 });
 
@@ -55,8 +61,16 @@ typedValueElement.addEventListener('input', () =>{
         typedValueElement.value = '';
         const elapsedTime = new Date().getTime() - startTime;
         console.log(elapsedTime);
-        const message = `YOU FINISHED IN ${elapsedTime / 1000} SECONDS.`
+        const message = `YOU FINISHED IN ${elapsedTime / 1000} SECONDS.`;
         messageElement.innerText = message;
+        const WPM = `YOUR WPM is: ${Math.round(words.length / (elapsedTime / (1000 * 60)))} WPM`;
+        WPMElement.innerText = WPM;
+
+        var el = document.getElementById('start');
+        el.firstChild.data = 'RESTART';
+
+        quoteElement.innerHTML = '';
+
 
     }else if(typedValue.endsWith(' ') && typedValue.trim() === currentWord){
         typedValueElement.value = '';

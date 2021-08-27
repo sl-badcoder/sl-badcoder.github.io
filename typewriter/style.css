@@ -10,4 +10,25 @@
 html {
     background-color: darkgray;
     color: white;
+    text-align: center;
+}
+#start {
+    border-radius: 15%;
+    color: red;
+    background-color: black;
+
+}
+#start:hover {
+    cursor: pointer;
+    color: green;
+    background-color: black;
+}
+#WPM {
+    color: green;
+}
+#message {
+    color: darkgreen;
+}
+h1 , #title{
+    text-align: center;
 }
