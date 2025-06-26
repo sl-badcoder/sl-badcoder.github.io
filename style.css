@@ -1,0 +1,19 @@
+html, body{
+    margin: 0;
+    height: 100%;
+}
+
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.bottom-text{
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    text-align: center;
+    padding: 10px;    
+}
