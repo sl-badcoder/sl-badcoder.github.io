@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<header>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+</header>
+<body>
+    <h1>Dictionary</h1>
+    This is a Dictionary defining the most common used Terms in computer science.
+
+    <h2>1. Memory</h2>
+
+
+    <h3>1.1 Primary Storage</h3>
+    <br>
+    <b>RAM</b>
+    <br>
+    Random access memory which is mostly used for implementing main memory offers a grid storage where each line can be accessed in a random fashion without a decrease in performance. But still it is often useful to load a whole line which is faster than changing to another line since we do not need to change the row signal only the signal column, so we decrease the number of columns needed. 
+    <br>
+    <br>
+    <b>ROM</b>
+    <br>
+    Read only memory is mostly used for storing for example the operating system which lets the user start the computer, but he cannot overwrite the heart of his computer. There are types of ROM which cannot be erased (mask ROM integrated circuit) and types which can be erased (EPROM and EEPROM).
+
+    <br>
+    <br>
+    <b>NUMA</b>
+    Non-uniform Memory Access is another Type of architecture, where each core got its own Memory, so we do Not have a Single Access Point. Accessing the neighbor memory with only one hop in between is the fastest option. Each additional hop adds additional latency. 
+
+
+    <br>
+    <br>
+    <b>DIMM</b>
+    <br>
+    A dual-inline memory module is a module where our RAM is placed on the chip.
+
+    <br>
+    <br>
+    <b>EEPROM</b>
+    <br>
+    Electrically Erasable Programmable Read-Only Memory which is often used to store the operating system. To fasten up the start-up process the operating system is often still loaded into main memory. 
+    
+
+    <br>
+    <br>
+    <h3>1.2 Caches</h3>
+    This sub chapter is mostly based on the paper what every programmer should know about memory so in case you want to get a deeper understanding of the presented topics please investigate this paper. 
+    <br>
+    <br>
+    <b>TLB</b>
+    <br>keywords: SRAM, virtual memory
+    <br>
+    Translation Look-aside Buffer is a small SRAM fully associative cache that is mostly used to translate virtual memory addresses to actual physical addresses. The TLB can be accessed parallel and normally doesn’t contain more than 1024 entries.
+
+</body>
+
+</html>
