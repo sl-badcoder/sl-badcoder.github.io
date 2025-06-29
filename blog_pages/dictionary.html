@@ -3,14 +3,20 @@
 <header>
     <meta charset="UTF-8">
     <title>Dictionary</title>
+    <style>
+        .center-image {
+          display: block;
+          margin: 0 auto;
+        }
+      </style>
 </header>
 <body>
     <h1>Dictionary</h1>
-    This is a Dictionary defining the most common used Terms in computer science.
+    This is a Dictionary defining the most common used Terms in computer science. We wanted to save all of them in one document such that one can search faster for the needed information without managing 20ish tabs.
 
     <h2>1. Memory</h2>
 
-
+    <hr>
     <h3>1.1 Primary Storage</h3>
     <br>
     <b>RAM</b>
@@ -41,18 +47,161 @@
     <br>
     Electrically Erasable Programmable Read-Only Memory which is often used to store the operating system. To fasten up the start-up process the operating system is often still loaded into main memory. 
     
-
-    <br>
-    <br>
+    <hr>
     <h3>1.2 Caches</h3>
-    This sub chapter is mostly based on the paper what every programmer should know about memory so in case you want to get a deeper understanding of the presented topics please investigate this paper. 
+    This sub chapter is mostly based on the paper what every programmer should know about memory so in case you want to get a deeper understanding of the presented topics please investigate this paper. [1] The images in this chapter are also all from this paper, so We don't claim any of these given images to be ours. 
     <br>
     <br>
     <b>TLB</b>
     <br>keywords: SRAM, virtual memory
     <br>
     Translation Look-aside Buffer is a small SRAM fully associative cache that is mostly used to translate virtual memory addresses to actual physical addresses. The TLB can be accessed parallel and normally doesn’t contain more than 1024 entries.
+    <br>
+    <br>
+    <img src="../utils/cache.png" alt="Cache Comparison" width="500" height="100" class="center-image">
+    <br>
+    <br>
+    <b>DIRECT-MAPPED CACHE</b>
+    <br>keywords: simple, high conflict rate
+    <br> 
+    stores each cache line at exact one position. The direct-mapped cache A direct-mapped cache splits the Tag and Data into two separate sets. They can be accessed using the Set bit working with a Multiplexer. Only a single comparator is used because every cache line can only be used by similar addresses. The multiplexer, which is here the growing part, is relatively cheap it only needs O(log N) number of transistors as it becomes bigger. The drawback of this method is, that if the addresses are not evenly distributed a high conflict rate will be seen because some cache lines will be heavily used while others will only get a small amount of data.
+    <br>
+    <img src="../utils/directmappedcache.png" alt="Direct-mapped-cache" width="200" height="150" class="center-image">
 
+    <br>
+    <br>
+    <b>FULLY ASSOCIATIVE CACHE</b>
+    <br>keywords: complex, low conflict rate
+    <br>
+    When using this cache architecture every address can be saved at every location in the cache. The tag bits are all compared in parallel using comparators. This fact is also the downside of this architecture because when increasing the cache size a new comparator is needed. These comparators are expensive register-wise.
+
+    <img src="../utils/fully-associative-cache.png" alt="Direct-mapped-cache" width="200" height="150" class="center-image">
+
+    <br>
+    <br>
+    <b>SET-ASSOCIATIVE CACHE</b>
+    <br>keywords: hybrid
+    <br>
+
+The set-associative cache combines the best of two worlds. It is a mixture of the direct-mapped cache and the fully set associative cache. So every cache line can be stored in a set of cache lines. First, the Tag and Data storage are divided into separate sets like the direct-mapped cache. To extend the direct-mapped cache multiple values can be accessed via the same set value. Second, the Tag bits are all compared in parallel which is like the fully associative cache. When the cache size grows only the number of columns grows. When the associativity grows it becomes expensive because now the number of comparators grows which are expensive (needing large amounts of transistors).
+
+<img src="../utils/set-associative-cache.png" alt="Direct-mapped-cache" width="350" height="250" class="center-image">
+<hr>
+<h3>1.3 Secondary Storage</h3>
+
+
+<br>
+<br>
+<b>OPTANE</b>
+<br>
+<br>
+3D-Xpoint was invented by intel and micron technology. It offers lower latency and endures more write operations than traditional NAND-flash. Instead of working with different electrical voltage niveous it depends on varying different resistance levels. They need fewer transistors than NAND-flash, so the integration-density is higher than for NAND-flash. Even though they offer all these advantages in comparison to NAND-flash they were discontinued in 2022.
+
+
+<br>
+<br>
+<b>FIELD-EFFECT-TRANSISTOR</b>
+<br>keywords: MOSFET, single
+<br>
+
+
+<br>
+<br>
+<b>OVER-PROVISIONING</b>
+<br>keywords: SSD, cache
+<br>
+When using over-provisioning for your SSDs a part of your SSD will be free and used like a cache for operations like garbage collection or wear leveling. Garbage collection is the process where old or invalid data will be erased. But due to the internals of an SSD only whole blocks can be erased. This means if a block has still contains a page with valid and used data this data has to be written somewhere else until the block can be erased. So, when we have a write intensive workload it can happen that the garbage collection process has no block where it can write the valid data to and it becomes complex to find a suitable block. In contrast when we over-provisioned the SSD, we have free blocks all the time where we can temporarily safe such valid blocks while we erase pages. The same argument helps us for wear-leveling where we also need to erase some blocks to make sure the use of the cells is uniformly distributed. For more information: [2]
+<hr>
+<h3>1.4 SSD</h3>
+This sub chapter is mostly based on the book "inside SSD" so if you need more
+specific information about the topics, please look them up in the book.
+<br>
+<br>
+<b>NAND FLASH</b>
+<br>
+<br>
+Today most SSDs are implemented using NAND Flash which can usually store 1 bit per cell. NAND Flashs is connected to NAND Words which can be accessed by one transistor up front and one at the end. A logical page is the smallest accessible unit for reading and writing and a block is the smallest unit to be erasable. One block consists e.g. of 64 Pages. 
+<br>
+<br>
+<b>Memory Controller</b>
+<br>
+<br>
+A memory controller is also implemented on the SSD and like the name says controls how the memory is working. It has two main purposes. First it needs to provide the most suitable interface and protocol towards the host and the flash memory. Second it must handle data, maximize transfer speed, data integrity and information retention. Usually, an 8–16-bit processor is used to implement this. 
+<br>
+<br>
+<b>Wear Leveling</b>
+<br>
+<br>
+Wear leveling is a mechanism to distribute the use of pages fairly over the whole SSD so that not some pages have a tremendous higher amount of reading and writing cycles on them. If the same logical sector is written the wear leveling mechanism still maps a different underlying physical sector so that we have a fair amount of write cycles per sector leading the SSD to a longer lifetime. This is needed because the life-cycle of an SSD relatively short.
+<br>
+<br>
+<b>Garbage Collection</b>
+<br>Keywords: random write
+<br>
+When the number of free sectors falls below a certain level garbage collection is used to compact and erase blocks. Garbage collection is expensive performance wise and should be performed in the background. Especially a big drop in performance occurs when we run random writes on near-fully SSDs. Because then we often have to use garbage collection to erase the full blocks. 
+<br>
+<br>
+<b>PCIe</b>
+<br>
+<br>
+Peripheral Component Interconnect Express is a new standard to access either graphic cards or secondary storage on the mainframe. PCIe is highly parallelizable by offering lane access with up to 16 lines. Each line consists of two directions One sub-line where the data is sent and one sub-line where the data is received. At the end the data can still only be send serial over the cable. PCIe is hot-plug capable. [3]
+<br>
+<br>
+<b>CXL</b>
+<br>
+<br>
+Compute Express Link is a new standard protocol which enables the access of main memory over PCIe. It degrades performance but is especially useful for memory-centric designs, can reduce the carbonic footprint and can increase the longetivity of DRAM. To learn more about CXL you can look at this blog post: <a href="cxl.html">CXL</a>.
+<br>
+<br>
+<b>SLC</b>
+<br>
+<br>
+A single level cell can store 1 bit and is used in NAND flash arrays. 
+<br>
+<br>
+<b>MLC</b>
+<br>
+<br>
+A multi-level cell can how the name suggests store multiple bits precisely it can store 2 bits. 
+<br>
+<br>
+<b>SATA</b>
+<br>
+<br>
+Sata devices are a type of old-fashioned SSDs compared to SAS it is the cheaper version. It uses the ATA (attachment) command set.
+
+<br>
+<br>
+<b>SAS</b>
+<br>
+<br>
+Sas drivers are fast and offer more features than SATA SSDs. Additionally, it supports link aggregation – wide porting. Link aggregation combines multiple physical cables into a single logical cable to increase bandwidth and provide redundancy and increase fault tolerance. Wide porting is a similar concept but is more focused on high-performance computing. 
+
+<br>
+<br>
+<b>NVMe</b>
+<br>
+<br>
+Non-volatile memory express is a scalable interface protocol to access PCIe SSDs with a standardized protocol. Especially offering way more queues than old protocols like SAS or SATA makes it possible to exploit the full performance increase made by PCIe. 
+
+<br>
+<br>
+<b>Workload Types (random, sequential)</b>
+<br>
+<br>
+There exists two types of patterns with whom you can access SSDs. You can access it in an random manner. But especially random writes have a big performance problem when the SSD gets full due to garbage collection. [4] Even though SSD should be able to perform logically random and sequential access with the same performance the hardware is still assymetric[5]. Especially loading full sequential blocks with needing less signals then accessing random pages improves the sequential workload performance. 
+<hr>
+<br> There exist Chapter 2-5 but we still have to convert them from latex to html, so this text is in progress...
+
+<h3>References</h3>
+- [1] Ulrich Drepper. What every programmer should know about memory. https://people.freebsd.org/~lstewart/articles/cpumemory.pdf, 2024.<br>
+<br> - [2] Samsung. Over provisioning for samsung data center ssd. 03 2019.<br>
+<br>- [3] Pcie architecture. https://www.youtube.com/watch?v=caiREMKP0-E&list=PLZe4P0P_9Cosd0i2ha_QRdWlR1iZ0yVG4, 2024. <br>
+<br>- [4] lies, damn lies and ssd benchmarks. https://web.archive.org/web/
+20170413223914/http://www.seagate.com/nl/nl/tech-insights/
+lies-damn-lies-and-ssd-benchmark-master-ti/, 2024<br>
+<br> - [5] ack. is sequential io dead? https://jack-vanlightly.com/blog/2023/
+5/9/is-sequential-io-dead-in-the-era-of-the-nvme-drive, 2024. <br>
 </body>
 
 </html>
