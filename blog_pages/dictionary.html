@@ -191,7 +191,64 @@ Non-volatile memory express is a scalable interface protocol to access PCIe SSDs
 <br>
 There exists two types of patterns with whom you can access SSDs. You can access it in an random manner. But especially random writes have a big performance problem when the SSD gets full due to garbage collection. [4] Even though SSD should be able to perform logically random and sequential access with the same performance the hardware is still assymetric[5]. Especially loading full sequential blocks with needing less signals then accessing random pages improves the sequential workload performance. 
 <hr>
-<br> There exist Chapter 2-5 but we still have to convert them from latex to html, so this text is in progress...
+
+<h2>2. Languages</h2>
+
+<br>
+<br>
+<b>CPP</b>
+<br>
+<br>
+CPP is a high/low-level language which still offers manually handling memory access via allocate functions. CPP also offers object-oriented programming features and is nowadays one of the fastest languages to use due to its near to hardware and memory programming. 
+<br>
+<br>
+<b>JAVA</b>
+<br>
+<br>
+Java is a programming language which is famous for its garbage collector which distinct it from CPP and other more low-level languages where memory can/must be handled manually. Additionally, Java is Object-oriented and to run JAVA it will run in a sandbox which adds additional security features. Java uses UTF-16 for encoding characters and offers built in String datatype. 
+<br>
+<br>
+<b>PYTHON</b>
+<br>
+<br>
+Python is the language mostly used for AI/ML programming because it offers good libraries like numpy, pandas, pytorch, etc. which all are widely used in the field. It is a really high-level language and has its advantages in scientific computing but is really slow compared to JAVA and CPP. Python is mostly built up on underlying CPP code. 
+
+<br>
+<br>
+<b>SQL</b>
+<br>
+<br>
+The structured query language is a declarative programming language to get information out of a database system. The also called sequel language was developed for simplicity and to give access to databases to people without proper informatics background. 
+
+<h2>3. Databases</h2>
+This chapter focuses on the basics of databases and the main algorithms and methods used implementing the standard databases. 
+
+<br>
+<br>
+<b>DATAPLANE</b>
+<br>keywords: data flow, road
+<br>
+Dataplane is a term mostly used in computer networks. It is the place where the actual flow of the data happens and where the data is processed. It mostly operates on layer 2 and layer 3 of the OSI model. In contrast, the control plane is the part where the decisions will be made e.g. where the data will go. A real-world example would be switching, and routing.
+
+<br>
+<br>
+<b>GRAPH DATABASE</b>
+<br>Keywords: Neo4J, NoSQL
+<br>
+
+Graph databases are mostly used for complex queries that would Need complex join structures in Relations databases. The Main Concept is each entity is a Mode and the edges are the relationship between these nodes. Graph databases can be seen as structure-less and expanding them to a new structure is straight-forward while being highly Complex in relational databases.
+
+<br>
+<br>
+<b>ACID</b>
+<br>
+<br>
+Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there are no other users) and Durability (I can use the system anytime). 
+
+
+
+
+
 
 <h3>References</h3>
 - [1] Ulrich Drepper. What every programmer should know about memory. https://people.freebsd.org/~lstewart/articles/cpumemory.pdf, 2024.<br>
