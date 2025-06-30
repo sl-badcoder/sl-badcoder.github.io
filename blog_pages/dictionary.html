@@ -21,41 +21,57 @@
     <br>
     <b>RAM</b>
     <br>
-    Random access memory which is mostly used for implementing main memory offers a grid storage where each line can be accessed in a random fashion without a decrease in performance. But still it is often useful to load a whole line which is faster than changing to another line since we do not need to change the row signal only the signal column, so we decrease the number of columns needed. 
+    Random access memory which is mostly used for implementing main memory 
+    offers a grid storage where each item can be accessed in a random fashion 
+    (almost) without decreasing performance. Accesing a whole line is faster than accessing 
+    single items in the grid. When switching between lines a signal is triggered which 
+    induces extra runtime.
     <br>
     <br>
     <b>ROM</b>
     <br>
-    Read only memory is mostly used for storing for example the operating system which lets the user start the computer, but he cannot overwrite the heart of his computer. There are types of ROM which cannot be erased (mask ROM integrated circuit) and types which can be erased (EPROM and EEPROM).
+    Read only memory is mostly used for storing the operating 
+    system which lets the user start the computer, but not overwriting 
+    the heart of his computer. There are types of ROM which cannot be erased
+    (mask ROM integrated circuit) and types which can be erased (EPROM and EEPROM).
 
     <br>
     <br>
     <b>NUMA</b>
     <br>
-    Non-uniform Memory Access is another Type of architecture, where each core got its own Memory, so we do Not have a Single Access Point. Accessing the neighbor memory with only one hop in between is the fastest option. Each additional hop adds additional latency. 
-
-
+    Non-uniform Memory Access is a type of memory-architecture, where 
+    each core got its own Memory. Accessing neighbouring memories introduces
+    so called hops. Each additional needed hop adds extra latency.
     <br>
     <br>
     <b>DIMM</b>
     <br>
-    A dual-inline memory module is a module where our RAM is placed on the chip.
+    On the chip our RAM is placed in a dual-inline memory module.
 
     <br>
     <br>
     <b>EEPROM</b>
     <br>
-    Electrically Erasable Programmable Read-Only Memory which is often used to store the operating system. To fasten up the start-up process the operating system is often still loaded into main memory. 
+    Electrically Erasable Programmable Read-Only Memory often 
+    stores the operating system. To fasten up the start-up process 
+    the operating system is often still loaded into main memory. 
     
     <hr>
     <h3>1.2 Caches</h3>
-    This sub chapter is mostly based on the paper what every programmer should know about memory so in case you want to get a deeper understanding of the presented topics please investigate this paper. [1] The images in this chapter are also all from this paper, so We don't claim any of these given images to be ours. 
+    This sub chapter is mostly based on the paper what every programmer 
+    should know about memory so in case you want to get a deeper 
+    understanding of the presented topics please investigate it. [1] 
+    The images in this chapter are also all from this paper,
+     so we don't claim any of these given images to be ours. 
     <br>
     <br>
     <b>TLB</b>
     <br>keywords: SRAM, virtual memory
     <br>
-    Translation Look-aside Buffer is a small SRAM fully associative cache that is mostly used to translate virtual memory addresses to actual physical addresses. The TLB can be accessed parallel and normally doesn’t contain more than 1024 entries.
+    A translation look-aside buffer is a small SRAM fully associative cache 
+    that is mostly used to translate virtual memory addresses to actual 
+    physical addresses. The TLB can be accessed parallel and normally 
+    doesn’t contain more than 1024 entries.
     <br>
     <br>
     <img src="../utils/cache.png" alt="Cache Comparison" width="500" height="100" class="center-image">
