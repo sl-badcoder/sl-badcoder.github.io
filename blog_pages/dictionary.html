@@ -261,11 +261,108 @@ Graph databases are mostly used for complex queries that would Need complex join
 <br>
 Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there are no other users) and Durability (I can use the system anytime). 
 
+<h2>Access Path</h2>
+<br>
+<br>
+<b>Struct</b>
+<br>
+<br>
+In c/cpp simply the ordering of the needed bits. 
+<br>
+<img src="../utils/STRUCT.png" alt="STRUCT" width="250" height="50" class="center-image">
+
+<br>
+<br>
+<b>PADDING</b>
+<br>
+<br>
+Fill up the struct with bits to match a certain restriction. Normally implemented as zero-padding just fill up with 0‘s.
+<br>
+<br>
+<b>INDEXES</b>
+<br>
+<br>
+Data structure is mostly implemented as a search tree, which only represents the key values and offers a more efficient search for the underlying tuples. 
+<br>
+<br>
+<b>RELATIONS</b>
+<br>
+<br>
+How data has a connection to other data. A sample relation would be having all professors in one table. 
+
+<br>
+<br>
+<b>FREE SPACE MANAGEMENT</b>
+<br>
+<br>
+Free space management is a mechanism which tries to maximize the available space by using techniques like compression. There are multiple ways to implement it. We can just safe 2 bits to define how full a given page is and store it in the dictionary. 
+
+<br>
+<br>
+<b>VOLCANO-STYLE-ITERATION</b>
+<br>
+<br>
+Query processing is implemented in a pipeline manner. Tuples will be sent through different stages where a different relational operator is applied. Based on the fundamental principle of data flow. 
+<br>
+<br>
+<b>VECTOR-AT-A-TIME</b>
+<br>
+<br>
+Process multiple vectors at a time instead of a single tuple. This offers SIMD instructions and other possible optimizations.
+<br>
+<br>
+<b>MATERALIZATION-VIEW</b>
+<br>
+<br>
+Process whole columns at a time but this has the problem that you have more complex query plans than in other times. 
+
+<br>
+<br>
+<b>SHADOW PAGING</b>
+<br>keywords: dbms, old
+<br>
+Shadow paging refers to the process where for each page that will be changed a new copy is stored where the actual change will take place. This offers the possibility to always have the clean page on the disk and only the dirty page is stored as a copy. This process is for example used when including mmap in your database to offer transactional safety. [6] The drawbacks of this method are that you need additional memory space due to having an additional copy. Another drawback is that your memory is not contiguous anymore which slows sequential access. For example, if first your page order was [1,2,3,4] and you write to page 3 with a copy at page 8. After the process the page ordering will look like this: [1,2,8,4]. This was especially for HDDs a big drawback but since random access should be as fast as sequential access for SSDs now maybe shadow copying can come back in trend. 
+
+<br>
+<br>
+<b>DELTA FILES</b>
+<br>keywords: shadow paging
+<br>
+Delta files have the same approach as shadow paging but instead of interacting on the whole memory for all files like in shadow paging. Delta files use a separate memory space to either store the clean or the dirty copies. The main advantage overshadow paging is that it works through the separate memory space after the principles of locality. Another advantage is that having these separate spaces does not mix dirty and clean pages. But like every method, these files have several drawbacks. First, the number of I/O increases. When you abort/commit changes it becomes more expensive. Lastly, keeping track of these delta pages is non-trivial. 
+
+
+<br>
+<br>
+<b>SEGMENT</b>
+<br>keywords: composition
+<br>
+A segment is a combination of more than one page. Segments are used since having page granularity is in most cases only useful for I/O operations. So, in other cases for example indexes, relations, and free space management conclude multiple pages. Segments are implemented using virtual addresses to access these blocks of pages. There are many types of segments. Private vs. Public, Temporary vs. Permanent, Automatic vs. Manual, and with recovery vs. without recovery. 
+
+<br>
+<br>
+<b>STATIC FILE MAPPING</b>
+<br>keywords: simple, complex resizing
+<br>
+When using static file mapping all pages are stored in a big catalogue. The catalog is simply just a pointer that goes through the whole catalog and looks for the given page. The big problem when using this approach is that the resizing will be very difficult because the memory is not contiguous anymore and some pages may need to be reordered or placed at another place. 
+
+<br>
+<br>
+<b>DYNAMIC EXTENT-MAPPING</b>
+<br>keywords: flexible, administrative overhead
+<br>
+When using dynamic extent mapping the pages are not accessed directly, they are more accessed using a higher abstraction layer the catalog only points then to the first element of the given segment. This offers simpler resizing because the pointer can point to non-contiguous memory. Often the pages are accessed via a 2<sup>N</sup> pattern so that the not arbitrarily large number of addresses can be stored. 
+
+<br>
+<br>
+<b>DYNAMIC BLOCK-MAPPING</b>
+<br>keywords: growth handling, overhead
+<br>
+The dynamic block mapping approach maps every block to a pointer in the catalog which lets the catalog grow indefinitely. Also, the actual blocks can lay anywhere on the physical layer and can still be accessed. 
 
 
 
-
-
+<br>
+<br>
 <h3>References</h3>
 - [1] Ulrich Drepper. What every programmer should know about memory. https://people.freebsd.org/~lstewart/articles/cpumemory.pdf, 2024.<br>
 <br> - [2] Samsung. Over provisioning for samsung data center ssd. 03 2019.<br>
@@ -275,6 +372,9 @@ Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there 
 lies-damn-lies-and-ssd-benchmark-master-ti/, 2024<br>
 <br> - [5] ack. is sequential io dead? https://jack-vanlightly.com/blog/2023/
 5/9/is-sequential-io-dead-in-the-era-of-the-nvme-drive, 2024. <br>
+<br> - [6] Andrew Crotty, Viktor Leis, and Andrew Pavlo. Are you sure you want to
+use mmap in your database management system? In CIDR 2022, Confer-
+ence on Innovative Data Systems Research, 2022. <br>
 </body>
 
 </html>
