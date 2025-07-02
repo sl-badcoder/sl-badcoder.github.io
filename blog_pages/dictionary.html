@@ -235,7 +235,7 @@ Python is the language mostly used for AI/ML programming because it offers good 
 <br>
 <br>
 The structured query language is a declarative programming language to get information out of a database system. The also called sequel language was developed for simplicity and to give access to databases to people without proper informatics background. 
-
+<hr>
 <h2>3. Databases</h2>
 This chapter focuses on the basics of databases and the main algorithms and methods used implementing the standard databases. 
 
@@ -359,7 +359,52 @@ When using dynamic extent mapping the pages are not accessed directly, they are 
 <br>
 The dynamic block mapping approach maps every block to a pointer in the catalog which lets the catalog grow indefinitely. Also, the actual blocks can lay anywhere on the physical layer and can still be accessed. 
 
+<hr>
 
+<h2>3.2 Replacement Strategies</h2>
+<br>
+<br>
+<b>2Q</b>
+<br>keywords: mix, FIFO, LRU
+<br>
+The two-queue approach uses how the name states two queues to maintain pages. One queue is implemented as a FIFO. The other queue is implemented as a LRU queue. It is a simple algorithm to solve the problem of having many pages that are referenced only once but still do not have the drawback of not working after the locality principle. First, all pages are stored in the FIFO. When a page is referenced, it will be put in the LRU. This leads to the fact that cold pages are stored in the FIFO and hot pages are stored in the LRU.
+
+<br>
+<br>
+<b>LFU</b>
+<br>keywords: expensive, good idea
+<br>
+Least frequently used keeps the amount of how much each page was accessed in mind and evicts the one with the lowest number. The drawbacks of this method are that in practice it was too expensive to use. Because for every page the amount must be stored and also all these values have to be compared.
+
+<br>
+<br>
+<b>FIFO</b>
+<br>keywords: simple, no locality
+<br>
+First in first out, the most common and simplest algorithm of them all. This method can be implemented using a single linked list, where the new entry will add at the tail and the head will be removed. The drawback of this method is that locality is not included because, after the locality principle, some pages will be accessed more frequently than others, and pages that are loaded into the buffer normally should stay there for a longer time.  
+
+<br>
+<br>
+<b>SECOND CHANCE/CLOCK</b>
+<br>keywords: complex, fast
+<br>
+The second change is like the last recently used strategy. You can implement this method by using a circular buffer queue and a pointer. The pointer simply goes through the queue and checks each element for its reference bit. If the bit equals 1 the bit will be flipped, and the pointer will go to the next queue entry. If the bit is set to zero, the page will be evicted and a new page will be loaded into this entry. When a page is accessed the second chance bit is set to 1. 
+
+<br>
+<br>
+<b>LRU</b>
+<br>keywords: replacement, simple, fast
+<br>
+Least recently used is a replacement strategy used in several areas of computer science. For example, it is used as a replacement strategy for the caches on the chip but also for buffer managers implemented in main memory. As the name states the line that was not used for the longest amount of time.
+
+<br>
+<br>
+<b>NLRU</b>
+<br>keywords: simple, fast, single bit
+<br>
+The strategy not most recently used is also a simple mechanism to implement a fast replacement strategy. The most recently used line can be indicated by using a single bit. So the logic only needs to look at that single bit and can directly evict another line. 
+
+<hr>
 
 <br>
 <br>
