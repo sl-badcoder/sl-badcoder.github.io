@@ -448,6 +448,46 @@ These are the parameters which we learn on the training set and define there. In
 <br>
 Hyperparameter are the parameters which classify which model we use they are not trained on the test data only validated on the validation data. If we want to change our hyperparameter we have to completely retrain our model on the given training set.
 
+<h2>4.1 Machine Learning</h2>
+<br>
+<br>
+<b>kNN</b>
+<br>
+<br>
+K nearest neighbor is an algorithm for clustering where you decide a class for a given datapoint based on its k nearest neighbors. The smaller the k the more prune it is to outliers. 
+
+<br>
+<br>
+<b>Decision Trees</b>
+<br>
+<br>
+A decision tree is a method to classify a given dataset. By introducing if conditions the data is split for example binary and building edges on the tree. There exists a trade-off between depth and accuraccy in the tree.
+
+<br>
+<br>
+<b>RMSprop</b>
+<br>Keywords: quad ration
+<br>
+This gradient descent optimization helps us to get larger steps in flat regions and smaller steps in steep regions by dividing through the quad ration of the gradients. When the step size is small (flat region) the value under the fraction will be smaller so the overall value larger. When the step size is big (steep region) the quad ration will be big and the new step size will be smaller than before. 
+
+
+<br>
+<br>
+<b>DROPOUT</b>
+<br>Keywords: ml, against overfitting
+<br>
+The dropout method implements a mechanism in which random neurons “drop” out given a certain percentage. This reduces the problem of overfitting so that some neurons will be overused or more focused. This approach additionally makes it possible to use one model like multiple models. A disadvantage of this approach is that we do not use all neurons, so it is less effective to its used space.
+
+
+<br>
+<br>
+<b>One-Hot Encoding</b>
+<br>
+<br>
+If we have categorial(discrete) classes which we need to categorise and no ordinal relationship between them exists so that we could use Integer/label- encoding we need one-hot encoding. Where each class correspond to one single-true vector. e.g. (1,0,0);(0,1,0);(0,0,1)
+for red, green, blue
+
+
 
 <br>
 <br>
