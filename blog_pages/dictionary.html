@@ -487,7 +487,27 @@ The dropout method implements a mechanism in which random neurons “drop” out
 If we have categorial(discrete) classes which we need to categorise and no ordinal relationship between them exists so that we could use Integer/label- encoding we need one-hot encoding. Where each class correspond to one single-true vector. e.g. (1,0,0);(0,1,0);(0,0,1)
 for red, green, blue
 
+<h2>4.2 Layers</h2>
+<br>
+<br>
+<b>POOLING LAYER</b>
+<br>Keywords: max, min, average
+<br>
+Pooling refers to a method used in CNNs where we e.g. take a matrix of 4 values and get its maximum. The next layer then only has the maximum values available. It is a technique used for CNNs.
 
+<br>
+<br>
+<b>CONVOLUTIONAL LAYER</b>
+<br>Keywords: CNN
+<br>
+Convolutional layers are layers where filters are applied to matrix input. These filters are applied through a kernel which has a given size and stride. Through these layers it is possible to automatically recognize features like edges, textures or patterns.
+
+<br>
+<br>
+<b>OVERLAPPED POOLING</b>
+<br>Keywords: pooling
+<br>
+Overlapped pooling describes a method where the s < z which means that the stride size is smaller than the kernel size so to “pool” the whole matrix we need to overlap some pooling’s. Some values will have influence in distinct kernel maps. This method is slightly better against overfitting then when setting s = z according to [7].
 
 <br>
 <br>
@@ -503,6 +523,7 @@ lies-damn-lies-and-ssd-benchmark-master-ti/, 2024<br>
 <br> - [6] Andrew Crotty, Viktor Leis, and Andrew Pavlo. Are you sure you want to
 use mmap in your database management system? In CIDR 2022, Confer-
 ence on Innovative Data Systems Research, 2022. <br>
+<br> - [7]Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton. Imagenet classification with deep convolutional neural networks. In F. Pereira, C.J. Burges, L. Bottou, and K.Q. Weinberger, editors, Advances in Neural Information Processing Systems, volume 25. Curran Associates, Inc., 2012.<br>
 </body>
 
 </html>
