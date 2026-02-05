@@ -5,26 +5,30 @@
     </head>
 <body>
     <h1>How CXL can impact the current data-center hype.</h1>
-    In this blog post I will shortly introduce the promising technology Compute Express Link (CXL) developed in 2019.
+    In this blog post I will shortly introduce the promising technology <b>Compute Express Link (CXL)</b> developed in 2019.
     Due to its possibility to reuse older RAM and decreasing costs of datacenters by a large margin Imo a very promising
     technology for the future of data-centers. 
-
-    <br>
-    Data-Centers are hot topic right now, Oracle is investing billions of dollars in data-centers (https://www.trendingtopics.eu/billion-dollar-shuffle-openai-nvidia-oracle/), 
-    Google is expanding its data-centers (https://www.googlecloudpresscorner.com/2025-11-11-Google-Announces-EUR5-5-Billion-Investment-in-Germany,-including-AI-Infrastructure,-through-2029), 
-    also Microsoft is having a huge share in the current hype (https://datacenters.microsoft.com/). A large amount of money is pumped into
-    data-centers right now and of course a lot of optimization is happening and has to be done. Having this huge potential and being this hot topic,
-    CXL can become a huge impact in how we build data-centers in the future. 
     <br>
     <br>
-    The compute express link is a network technology which lets us access RAM over a PCIe connection. 
+    <h2>1. What is CXL and why are data-centers relevant.</h2>
+        The compute express link is a network technology which lets us access <b>RAM</b> over a <b>PCIe</b> connection. 
     The access performance obviously reduces when connecting over PCIe in contrast to a connection over DIMM.
     However, we now are able to share RAM between processors and can build Memory Pools, which lets us conquer the problem of stranded memory [1]
-    <hr>
+      <br>
+    <br>
+    
+    <b>Data-Centers</b> are hot topic right now, Oracle is investing billions of dollars in data-centers [3], 
+    Google is expanding its data-centers [4], 
+    also Microsoft is having a huge share in the current hype [5]. A large amount of money is pumped into
+    data-centers right now and of course a lot of optimizations are happening and have to be done. Having this huge potential and being this hot topic,
+    CXL can become a huge impact in how we build data-centers in the future. Powering all this hype if of course like everything right now: comlpicate matrix multiplication.
 
+  <hr>
+    <h2>2. Blog progress</h2>
     Currently I'm in my exam season so I have some other work to do but when I'm finished, I will finish this blog post. In progress...
 
     <hr>  
+    <h2>3. The technical Part</h3>
     Definitions are based on the introduction video from CXL [2]<br>
         <br>
     CXL.io: based on PCIe 5.0 (and PCIe 6.0 after CXL 3.0) with a few enhancements, it provides configuration, link initialization and management, device discovery and enumeration, interrupts, DMA, and register I/O access using non-coherent loads/stores. 
@@ -32,17 +36,23 @@
     CXL.cache: defines interactions between a host and a device, allows peripheral devices to coherently access and cache host CPU memory with a low latency request/response interface. 
         <br>    <br>
     CXL.mem: allows host CPU to coherently access device-attached memory with load/store commands for both volatile (RAM) and persistent non-volatile (flash memory) storage
+    
     <hr>
+    <h2>4. Good to know</h2>
     Interesting papers: "Managing Memory Tiers with CXL in Virtualized Environments", "Design Tradeoffs in CXL-Based Memory Pools for Public Cloud Platforms",
     "A Case Against CXL Memory Pooling", "TPP: Transparent Page Placement for CXL-Enabled Tiered-Memory". 
-    <hr> 
+    <br> <br> 
     Interesting blogs: https://vaalukasolutions.com/what-is-compute-express-link-cxl/, 
     <hr> 
 </body>
-
+<h2>5. References</h2>
+<br> 
     [1] Huaicheng Li, Daniel S. Berger, Stanko Novakovic, Lisa Hsu, Dan Ernst, Pantea
         Zardoshti, Monish Shah, Samir Rajadnya, Scott Lee, Ishwar Agarwal, Mark D.
         Hill, Marcus Fontoura, and Ricardo Bianchini. 2022. Pond: CXL-Based Memory
         Pooling Systems for Cloud Platforms. arXiv:2203.00241 [cs.OS] https://arxiv.org/abs/2203.00241
-    [2] CXL Consortium.  Introduction to Compute Express Link™ (CXL™) Technology. https://www.youtube.com/watch?v=HPpQLGIxZWM
+   <br>  [2] CXL Consortium.  Introduction to Compute Express Link™ (CXL™) Technology. https://www.youtube.com/watch?v=HPpQLGIxZWM
+    <br> [3] https://www.trendingtopics.eu/billion-dollar-shuffle-openai-nvidia-oracle/
+    <br> [4] https://www.googlecloudpresscorner.com/2025-11-11-Google-Announces-EUR5-5-Billion-Investment-in-Germany,-including-AI-Infrastructure,-through-2029
+    <br> [5] https://datacenters.microsoft.com/
 </html>
