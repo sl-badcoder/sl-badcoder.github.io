@@ -1,55 +1,312 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>SL blog</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
-    <div class = "container">
-    <h1>SL blog
-    </h1>
-    This is my personal blog page, where I write about different things that I'm interested in. In most of the blog post I will write we which is just me, myself and I.
-    <hr>
-    I love databases, math (mainly analytical number theory - Maynard is the best) and I'm interested
-    in sports like football, basketball and tennis. 
-    <hr>
-    I'm a 24 year old german computer scientist - currently studying at TUM. 
-    <hr>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TUMuchData Member Survey</title>
 
-    <h2>Blogs:</h2>
-    - <a href="blog_pages/doctoreworthit.html">Lohnt sich ein Doktor?</a>
-    <br> - <a href="blog_pages/cxl.html">CXL</a>
-    <br> - <a href="blog_pages/dictionary.html">Dictionary</a>
-  <hr>
-  <h2>Videos I like:</h2>
-  -   <a href="https://www.youtube.com/watch?v=BbGeKi6T6QI">Stonebreaker Turing Award</a>
-  <br>-  <a href="https://www.youtube.com/watch?v=pqWUuYTcG-o">Federer Speech</a>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-    <!-- Chart Section
-<section id="activity">
-  <h2>My Coding Activity (GitHub + LeetCode)</h2>
-  <canvas id="activityChart" width="100%" height="50"></canvas>
-</section>
-<style>
-  #activityChart {
-    width: 100%;       /* make canvas take full width of container */
-    max-width: 800px;  /* optional max width */
-    height: 400px;     /* fixed height */
-  }
-</style>
- Chart.js CDN 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    body {
+      margin: 0;
+      font-family: "Courier New", monospace;
+      background: #050505;
+      color: #f5f5f5;
+    }
 
- Script to load and render the activity chart 
-<script src="activity-graph.js"></script>
--->
+    .page {
+      max-width: 900px;
+      margin: auto;
+      padding: 32px 20px 80px;
+    }
 
+    nav {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 64px;
+      font-size: 15px;
+    }
 
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      opacity: 0.75;
+    }
 
-<br>
-</div>
-  <div class="bottom-text">
-    Contact me: <a href="mailto:sl.blog.post0@gmail.com"> Mail</a>
-  </div>
-  </body>
+    nav a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .tag {
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 8vw, 88px);
+      line-height: 0.95;
+      margin: 0 0 20px;
+      letter-spacing: -4px;
+    }
+
+    .intro {
+      max-width: 680px;
+      color: #cfcfcf;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    form {
+      display: grid;
+      gap: 28px;
+    }
+
+    .question {
+      border: 1px solid #2a2a2a;
+      background: #0d0d0d;
+      padding: 24px;
+      border-radius: 18px;
+    }
+
+    .question-title {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 18px;
+    }
+
+    .required {
+      color: #ff5c5c;
+    }
+
+    .options {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid #272727;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: 0.15s ease;
+      color: #ddd;
+    }
+
+    .option:hover {
+      border-color: #fff;
+      background: #151515;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      accent-color: white;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid #333;
+      background: #050505;
+      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 20px;
+      background: white;
+      color: black;
+      border: none;
+      padding: 18px 26px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(255,255,255,0.15);
+    }
+
+    .note {
+      color: #888;
+      font-size: 14px;
+      margin-top: 24px;
+    }
+
+    #success {
+      display: none;
+      margin-top: 32px;
+      padding: 24px;
+      border: 1px solid #2a2a2a;
+      border-radius: 18px;
+      background: #0d0d0d;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <p class="tag">~/member_survey</p>
+    <h1>Member Survey</h1>
+
+    <p class="intro">
+      Help us improve our overall
+      TUMuchData experience. Your feedback helps shape the club.
+    </p>
+
+    <form
+      id="survey-form"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSfQGjz95vpHO8_dPfofmjhLCfN7WYhncG0dcwdg73gVJTt-DQ/formResponse"
+      method="POST"
+      target="hidden_iframe"
+    >
+
+      <section class="question">
+        <label class="question-title">What is your current level of study? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.366340186" value="Bachelor" required> Bachelor</label>
+          <label class="option"><input type="radio" name="entry.366340186" value="Master"> Master</label>
+          <label class="option"><input type="radio" name="entry.366340186" value="PhD"> PhD</label>
+          <label class="option"><input type="radio" name="entry.366340186" value="Other"> Other</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">What is your field of study? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.556048934" value="Computer Science" required> Computer Science</label>
+          <label class="option"><input type="radio" name="entry.556048934" value="Data Science"> Data Science</label>
+          <label class="option"><input type="radio" name="entry.556048934" value="Mathematics"> Mathematics</label>
+          <label class="option"><input type="radio" name="entry.556048934" value="Sonstiges:"> Other</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">How familiar are you with databases? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.234012409" value="Beginner" required> Beginner</label>
+          <label class="option"><input type="radio" name="entry.234012409" value="Intermediate"> Intermediate</label>
+          <label class="option"><input type="radio" name="entry.234012409" value="Advanced"> Advanced</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">How often do you attend our weekly talks? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.1635458660" value="Every week" required> Every week</label>
+          <label class="option"><input type="radio" name="entry.1635458660" value="Couple times a month"> Couple times a month</label>
+          <label class="option"><input type="radio" name="entry.1635458660" value="Once a month"> Once a month</label>
+          <label class="option"><input type="radio" name="entry.1635458660" value="Less than once a month"> Less than once a month</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">How relevant are the talks for you? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.1962547667" value="Highly relevant" required> Highly relevant</label>
+          <label class="option"><input type="radio" name="entry.1962547667" value="Medium relevance"> Medium relevance</label>
+          <label class="option"><input type="radio" name="entry.1962547667" value="Not so relevant"> Not so relevant</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">What was your favorite talk?</label>
+        <input type="text" name="entry.1315214134">
+      </section>
+
+      <section class="question">
+        <label class="question-title">What topics would you like to see in future talks?</label>
+        <textarea name="entry.455957848"></textarea>
+      </section>
+
+      <section class="question">
+        <label class="question-title">How would you rate your current engagement with TUMuchData? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.1666104231" value="High" required> High</label>
+          <label class="option"><input type="radio" name="entry.1666104231" value="Medium"> Medium</label>
+          <label class="option"><input type="radio" name="entry.1666104231" value="Low"> Low</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">How engaging do you find our current format? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.543353498" value="Very engaging" required> Very engaging</label>
+          <label class="option"><input type="radio" name="entry.543353498" value="Somewhat engaging"> Engaging</label>
+          <label class="option"><input type="radio" name="entry.543353498" value="Somewhat engaging"> Slightly engaging</label>
+          <label class="option"><input type="radio" name="entry.543353498" value="Not engaging at all"> Not engaging at all</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">What would make them more engaging?</label>
+        <textarea name="entry.481471412"></textarea>
+      </section>
+
+      <section class="question">
+        <label class="question-title">Where did you hear about us? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.439637748" value="LinkedIn" required> LinkedIn</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="WhatsApp"> WhatsApp</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="Signal"> Signal</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="University advertisment"> University advertisment</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="Poster/flyer on campus"> Poster/flyer on campus</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="Other students"> Other students</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="Lecture promotion"> Lecture promotion</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="Other"> Other</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">Please share any additional thoughts, suggestions, or feedback you would like us to know.</label>
+        <textarea name="entry.611480748"></textarea>
+      </section>
+
+      <button type="submit">Submit feedback →</button>
+
+      <p class="note">
+        Your answers are submitted to the official TUMuchData Google Form.
+      </p>
+    </form>
+
+    <div id="success">
+      <h2>Thank you.</h2>
+      <p>Your feedback was submitted successfully.</p>
+    </div>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+  </main>
+
+  <script>
+    const form = document.getElementById("survey-form");
+    const success = document.getElementById("success");
+
+    form.addEventListener("submit", function () {
+      setTimeout(() => {
+        form.style.display = "none";
+        success.style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 800);
+    });
+  </script>
+</body>
 </html>
