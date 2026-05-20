@@ -105,6 +105,15 @@
       background: #151515;
     }
 
+    .other-input {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .other-input.is-visible {
+      display: block;
+    }
+
     input[type="radio"],
     input[type="checkbox"] {
       accent-color: white;
@@ -159,6 +168,21 @@
       border-radius: 18px;
       background: #0d0d0d;
     }
+
+    #submit-status {
+      display: none;
+      color: #cfcfcf;
+      margin: 12px 0 0;
+      font-size: 14px;
+    }
+
+    #submit-status.is-visible {
+      display: block;
+    }
+
+    #submit-status.is-error {
+      color: #ff8a8a;
+    }
   </style>
 </head>
 
@@ -166,7 +190,7 @@
   <main class="page">
 
     <p class="tag">~/member_survey</p>
-    <h1>Member Survey</h1>
+    <h1>TUMuchData Member Survey</h1>
 
     <p class="intro">
       Help us improve our overall
@@ -186,8 +210,9 @@
           <label class="option"><input type="radio" name="entry.366340186" value="Bachelor" required> Bachelor</label>
           <label class="option"><input type="radio" name="entry.366340186" value="Master"> Master</label>
           <label class="option"><input type="radio" name="entry.366340186" value="PhD"> PhD</label>
-          <label class="option"><input type="radio" name="entry.366340186" value="Other"> Other</label>
+          <label class="option"><input type="radio" name="entry.366340186" value="__other_option__" data-other-target="study-level-other"> Other</label>
         </div>
+        <input class="other-input" id="study-level-other" type="text" name="entry.366340186.other_option_response" placeholder="Please specify">
       </section>
 
       <section class="question">
@@ -196,8 +221,9 @@
           <label class="option"><input type="radio" name="entry.556048934" value="Computer Science" required> Computer Science</label>
           <label class="option"><input type="radio" name="entry.556048934" value="Data Science"> Data Science</label>
           <label class="option"><input type="radio" name="entry.556048934" value="Mathematics"> Mathematics</label>
-          <label class="option"><input type="radio" name="entry.556048934" value="Sonstiges:"> Other</label>
+          <label class="option"><input type="radio" name="entry.556048934" value="__other_option__" data-other-target="field-other"> Other</label>
         </div>
+        <input class="other-input" id="field-other" type="text" name="entry.556048934.other_option_response" placeholder="Please specify">
       </section>
 
       <section class="question">
@@ -205,7 +231,7 @@
         <div class="options">
           <label class="option"><input type="radio" name="entry.234012409" value="Beginner" required> Beginner</label>
           <label class="option"><input type="radio" name="entry.234012409" value="Intermediate"> Intermediate</label>
-          <label class="option"><input type="radio" name="entry.234012409" value="Advanced"> Advanced</label>
+          <label class="option"><input type="radio" name="entry.234012409" value="Expert"> Expert</label>
         </div>
       </section>
 
@@ -251,8 +277,8 @@
         <label class="question-title">How engaging do you find our current format? <span class="required">*</span></label>
         <div class="options">
           <label class="option"><input type="radio" name="entry.543353498" value="Very engaging" required> Very engaging</label>
-          <label class="option"><input type="radio" name="entry.543353498" value="Somewhat engaging"> Engaging</label>
-          <label class="option"><input type="radio" name="entry.543353498" value="Somewhat engaging"> Slightly engaging</label>
+          <label class="option"><input type="radio" name="entry.543353498" value="Engaging"> Engaging</label>
+          <label class="option"><input type="radio" name="entry.543353498" value="Slightly engaging"> Slightly engaging</label>
           <label class="option"><input type="radio" name="entry.543353498" value="Not engaging at all"> Not engaging at all</label>
         </div>
       </section>
@@ -268,12 +294,13 @@
           <label class="option"><input type="radio" name="entry.439637748" value="LinkedIn" required> LinkedIn</label>
           <label class="option"><input type="radio" name="entry.439637748" value="WhatsApp"> WhatsApp</label>
           <label class="option"><input type="radio" name="entry.439637748" value="Signal"> Signal</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="University advertisment"> University advertisment</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="University advertisement"> University advertisement</label>
           <label class="option"><input type="radio" name="entry.439637748" value="Poster/flyer on campus"> Poster/flyer on campus</label>
           <label class="option"><input type="radio" name="entry.439637748" value="Other students"> Other students</label>
           <label class="option"><input type="radio" name="entry.439637748" value="Lecture promotion"> Lecture promotion</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="Other"> Other</label>
+          <label class="option"><input type="radio" name="entry.439637748" value="__other_option__" data-other-target="heard-about-other"> Other</label>
         </div>
+        <input class="other-input" id="heard-about-other" type="text" name="entry.439637748.other_option_response" placeholder="Please specify">
       </section>
 
       <section class="question">
@@ -282,6 +309,10 @@
       </section>
 
       <button type="submit">Submit feedback →</button>
+      <p id="submit-status" role="status" aria-live="polite"></p>
+
+      <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="pageHistory" value="0">
 
       <p class="note">
         Your answers are submitted to the official TUMuchData Google Form.
@@ -299,13 +330,56 @@
   <script>
     const form = document.getElementById("survey-form");
     const success = document.getElementById("success");
+    const submitButton = form.querySelector("button[type='submit']");
+    const submitStatus = document.getElementById("submit-status");
+    const hiddenIframe = document.querySelector("iframe[name='hidden_iframe']");
+    const otherRadios = form.querySelectorAll("[data-other-target]");
+    let hasSubmitted = false;
+    let submitTimeout;
+
+    function syncOtherInputs() {
+      otherRadios.forEach((radio) => {
+        const input = document.getElementById(radio.dataset.otherTarget);
+        const isSelected = radio.checked;
+
+        input.classList.toggle("is-visible", isSelected);
+        input.required = isSelected;
+
+        if (!isSelected) {
+          input.value = "";
+        }
+      });
+    }
+
+    form.addEventListener("change", syncOtherInputs);
+    syncOtherInputs();
+
+    hiddenIframe.addEventListener("load", function () {
+      if (!hasSubmitted) {
+        return;
+      }
+
+      clearTimeout(submitTimeout);
+      hasSubmitted = false;
+      form.style.display = "none";
+      success.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
     form.addEventListener("submit", function () {
-      setTimeout(() => {
-        form.style.display = "none";
-        success.style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 800);
+      hasSubmitted = true;
+      submitButton.disabled = true;
+      submitStatus.textContent = "Submitting...";
+      submitStatus.classList.remove("is-error");
+      submitStatus.classList.add("is-visible");
+
+      clearTimeout(submitTimeout);
+      submitTimeout = setTimeout(() => {
+        hasSubmitted = false;
+        submitButton.disabled = false;
+        submitStatus.textContent = "Submission could not be confirmed. Please check your connection and try again.";
+        submitStatus.classList.add("is-error");
+      }, 15000);
     });
   </script>
 </body>
