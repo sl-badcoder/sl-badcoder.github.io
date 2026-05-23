@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
-<header>
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary</title>
-    <style>
-        .center-image {
-          display: block;
-          margin: 0 auto;
-        }
-      </style>
-</header>
-<body>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body class="dictionary-page">
+    <div class="site-shell">
+        <header class="topbar">
+            <a class="brand" href="../index2.html">
+                <span class="brand-mark">SL</span>
+                <span>SL blog</span>
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="../index2.html#blogs">Blogs</a>
+                <a href="../index2.html#videos">Videos</a>
+                <a href="mailto:sl.blog.post0@gmail.com">Mail</a>
+            </nav>
+        </header>
+    </div>
+    <main class="dictionary-shell">
+    <section class="dictionary-hero">
     <h1>Dictionary</h1>
     This is a Dictionary defining the most common used Terms in computer science. We wanted to save all of them in one document such that one can search faster for the needed information without managing 20ish tabs.
+    </section>
+    <aside class="dictionary-tools" aria-label="Dictionary tools"></aside>
+    <article class="dictionary-content" id="dictionary-content">
 
     <h2>1. Memory</h2>
 
@@ -524,6 +538,9 @@ lies-damn-lies-and-ssd-benchmark-master-ti/, 2024<br>
 use mmap in your database management system? In CIDR 2022, Confer-
 ence on Innovative Data Systems Research, 2022. <br>
 <br> - [7]Alex Krizhevsky, Ilya Sutskever, and Geoffrey E Hinton. Imagenet classification with deep convolutional neural networks. In F. Pereira, C.J. Burges, L. Bottou, and K.Q. Weinberger, editors, Advances in Neural Information Processing Systems, volume 25. Curran Associates, Inc., 2012.<br>
+</article>
+</main>
+<script src="blog-design.js"></script>
 </body>
 
 </html>

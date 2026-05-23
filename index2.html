@@ -1,55 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SL blog</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
-  <body>
-    <div class = "container">
-    <h1>SL blog
-    </h1>
-    This is my personal blog page, where I write about different things that I'm interested in. In most of the blog post I will write we which is just me, myself and I.
-    <hr>
-    I love databases, math (mainly analytical number theory - Maynard is the best) and I'm interested
-    in sports like football, basketball and tennis. 
-    <hr>
-    I'm a 24 year old german computer scientist - currently studying at TUM. 
-    <hr>
+  <body class="home-page">
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index2.html">
+          <span class="brand-mark">SL</span>
+          <span>SL blog</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#blogs">Blogs</a>
+          <a href="#videos">Videos</a>
+          <a href="mailto:sl.blog.post0@gmail.com">Mail</a>
+        </nav>
+      </header>
 
-    <h2>Blogs:</h2>
-    - <a href="blog_pages/doctoreworthit.html">Lohnt sich ein Doktor?</a>
-    <br> - <a href="blog_pages/cxl.html">CXL</a>
-    <br> - <a href="blog_pages/dictionary.html">Dictionary</a>
-  <hr>
-  <h2>Videos I like:</h2>
-  -   <a href="https://www.youtube.com/watch?v=BbGeKi6T6QI">Stonebreaker Turing Award</a>
-  <br>-  <a href="https://www.youtube.com/watch?v=pqWUuYTcG-o">Federer Speech</a>
+      <main>
+        <section class="hero">
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">Personal notes on systems, math and sport</p>
+              <h1>SL blog</h1>
+              <p class="lead">This is my personal blog page, where I write about different things that I'm interested in. In most of the blog post I will write we which is just me, myself and I.</p>
+              <p class="lead">I love databases, math (mainly analytical number theory - Maynard is the best) and I'm interested in sports like football, basketball and tennis.</p>
+              <p class="lead">I'm a 24 year old german computer scientist - currently studying at TUM.</p>
+            </div>
 
-    <!-- Chart Section
-<section id="activity">
-  <h2>My Coding Activity (GitHub + LeetCode)</h2>
-  <canvas id="activityChart" width="100%" height="50"></canvas>
-</section>
-<style>
-  #activityChart {
-    width: 100%;       /* make canvas take full width of container */
-    max-width: 800px;  /* optional max width */
-    height: 400px;     /* fixed height */
-  }
-</style>
- Chart.js CDN 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <aside class="hero-panel" aria-label="Featured links">
+              <div class="signal-row">
+                <span>DB</span>
+                <span>Math</span>
+                <span>Sport</span>
+              </div>
+              <div class="hero-list">
+                <a href="blog_pages/doctoreworthit.html">Lohnt sich ein Doktor?<span>Open</span></a>
+                <a href="blog_pages/cxl.html">CXL<span>Open</span></a>
+                <a href="blog_pages/dictionary.html">Dictionary<span>Open</span></a>
+              </div>
+            </aside>
+          </div>
+        </section>
 
- Script to load and render the activity chart 
-<script src="activity-graph.js"></script>
--->
+        <section class="section-band" id="blogs">
+          <p class="eyebrow">Blogs</p>
+          <h2>Blogs:</h2>
+          <div class="card-grid">
+            <a class="card-link" href="blog_pages/doctoreworthit.html">
+              <span>01</span>
+              <strong>Lohnt sich ein Doktor?</strong>
+              <small>German article about doctoral degrees and career value.</small>
+            </a>
+            <a class="card-link" href="blog_pages/cxl.html">
+              <span>02</span>
+              <strong>CXL</strong>
+              <small>Notes on Compute Express Link and data-center memory.</small>
+            </a>
+            <a class="card-link" href="blog_pages/dictionary.html">
+              <span>03</span>
+              <strong>Dictionary</strong>
+              <small>Computer science terms collected in one searchable page.</small>
+            </a>
+          </div>
+        </section>
 
+        <section class="section-band" id="videos">
+          <p class="eyebrow">Videos I like</p>
+          <h2>Videos I like:</h2>
+          <div class="link-list">
+            <a class="pill-link" href="https://www.youtube.com/watch?v=BbGeKi6T6QI">Stonebreaker Turing Award</a>
+            <a class="pill-link" href="https://www.youtube.com/watch?v=pqWUuYTcG-o">Federer Speech</a>
+          </div>
+        </section>
+      </main>
+    </div>
 
-
-<br>
-</div>
-  <div class="bottom-text">
-    Contact me: <a href="mailto:sl.blog.post0@gmail.com"> Mail</a>
-  </div>
+    <footer class="site-footer">
+      Contact me: <a href="mailto:sl.blog.post0@gmail.com"> Mail</a>
+    </footer>
   </body>
 </html>
