@@ -165,7 +165,7 @@
       resize: vertical;
     }
 
-    /* ── Submit / Clear row ── */
+    /* ── Submit row ── */
     .form-actions {
       display: flex;
       align-items: center;
@@ -197,27 +197,6 @@
       opacity: 0.6;
       cursor: not-allowed;
       transform: none;
-    }
-
-    button[type="button"].clear-btn {
-      background: transparent;
-      color: #9d9d9e;
-      /* Gray-200 */
-      border: 1px solid #545557;
-      /* Gray-400 */
-      padding: 18px 26px;
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 16px;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    button[type="button"].clear-btn:hover {
-      border-color: #9d9d9e;
-      /* Gray-200 */
-      color: #eaeaea;
-      /* Gray-50 */
     }
 
     .note {
@@ -327,43 +306,100 @@
       method="POST" target="hidden_iframe">
 
       <section class="question">
-        <label class="question-title">What is your current level of study? <span class="required">*</span></label>
+        <label class="question-title">Are you a member <span class="required">*</span></label>
         <div class="options">
-          <label class="option"><input type="radio" name="entry.366340186" value="Bachelor" required> Bachelor</label>
-          <label class="option"><input type="radio" name="entry.366340186" value="Master"> Master</label>
-          <label class="option"><input type="radio" name="entry.366340186" value="PhD"> PhD</label>
-          <label class="option"><input type="radio" name="entry.366340186" value="__other_option__"
-              data-other-target="study-level-other"> Other</label>
+          <label class="option"><input type="radio" name="entry.357592063" value="Yes"> Yes</label>
+          <label class="option"><input type="radio" name="entry.357592063" value="No"> No</label>
         </div>
-        <input class="other-input" id="study-level-other" type="text" name="entry.366340186.other_option_response"
+      </section>
+
+      <section class="question">
+        <label class="question-title">When did you start coming to TUMuchData? (SS = Summer Semester, WS = Winter
+          Semester) <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="entry.885135949" value="SS 26"> SS 26</label>
+          <label class="option"><input type="radio" name="entry.885135949" value="WS 25/26"> WS 25/26</label>
+          <label class="option"><input type="radio" name="entry.885135949" value="SS 25"> SS 25</label>
+          <label class="option"><input type="radio" name="entry.885135949" value="WS 24/25"> WS 24/25</label>
+          <label class="option"><input type="radio" name="entry.885135949" value="SS 24"> SS 24</label>
+          <label class="option"><input type="radio" name="entry.885135949" value="WS 23/24"> WS 23/24</label>
+        </div>
+      </section>
+
+      <section class="question">
+        <label class="question-title">Where did you hear about us? <span class="required">*</span></label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="entry.439637748"
+              value="Lecture promotion from TUMuchData Member" data-required-group="heard-about"> Lecture promotion from
+            TUMuchData Member</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="LinkedIn"
+              data-required-group="heard-about"> LinkedIn</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="Welcome@TUM slides"
+              data-required-group="heard-about"> Welcome@TUM slides</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="Lecturers"
+              data-required-group="heard-about"> Lecturers</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="Other students/members"
+              data-required-group="heard-about"> Other students/members</label>
+          <label class="option"><input type="checkbox" name="entry.439637748"
+              value="Via some TUM website or TUM website" data-required-group="heard-about"> Via some TUM website or TUM
+            website</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="Poster on campus"
+              data-required-group="heard-about"> Poster on campus</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="Instagram"
+              data-required-group="heard-about"> Instagram</label>
+          <label class="option"><input type="checkbox" name="entry.439637748" value="__other_option__"
+              data-other-target="heard-about-other" data-required-group="heard-about"> Other</label>
+        </div>
+        <input class="other-input" id="heard-about-other" type="text" name="entry.439637748.other_option_response"
           placeholder="Please specify">
       </section>
 
       <section class="question">
-        <label class="question-title">What is your field of study? <span class="required">*</span></label>
+        <label class="question-title">Which database courses have you attended? <span class="required">*</span></label>
         <div class="options">
-          <label class="option"><input type="radio" name="entry.556048934" value="Computer Science" required> Computer
-            Science</label>
-          <label class="option"><input type="radio" name="entry.556048934" value="Data Science"> Data Science</label>
-          <label class="option"><input type="radio" name="entry.556048934" value="Mathematics"> Mathematics</label>
-          <label class="option"><input type="radio" name="entry.556048934" value="__other_option__"
-              data-other-target="field-other"> Other</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Cloud-based data processing"
+              data-required-group="database-courses"> Cloud-based data processing</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Datenbanksysteme und moderne CPU-Architekturen" data-required-group="database-courses">
+            Datenbanksysteme und moderne CPU-Architekturen</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Data Processing On modern Hardware" data-required-group="database-courses"> Data Processing On
+            modern Hardware</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Transaktionssysteme"
+              data-required-group="database-courses"> Transaktionssysteme</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Grundlagen Datenbanken"
+              data-required-group="database-courses"> Grundlagen Datenbanken</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Anfrageoptimierung"
+              data-required-group="database-courses"> Anfrageoptimierung</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Codegenerierung für Datenverarbeitung" data-required-group="database-courses"> Codegenerierung für
+            Datenverarbeitung</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Grundlagen Data Engineering"
+              data-required-group="database-courses"> Grundlagen Data Engineering</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Software Engineering: Datenbanksysteme" data-required-group="database-courses"> Software
+            Engineering: Datenbanksysteme</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Software Engineering: Fortgeschrittene Konzepte verteilter Datenbanken"
+              data-required-group="database-courses"> Software Engineering: Fortgeschrittene Konzepte verteilter
+            Datenbanken</label>
+          <label class="option"><input type="checkbox" name="entry.366340186"
+              value="Einsatz und Realisierung von Datenbanksystemen" data-required-group="database-courses"> Einsatz und
+            Realisierung von Datenbanksystemen</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="Cloud Information Systems"
+              data-required-group="database-courses"> Cloud Information Systems</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="High Performance Query Processing"
+              data-required-group="database-courses"> High Performance Query Processing</label>
+          <label class="option"><input type="checkbox" name="entry.366340186" value="__other_option__"
+              data-other-target="database-courses-other" data-required-group="database-courses"> Other</label>
         </div>
-        <input class="other-input" id="field-other" type="text" name="entry.556048934.other_option_response"
-          placeholder="Please specify">
+        <input class="other-input" id="database-courses-other" type="text"
+          name="entry.366340186.other_option_response" placeholder="Please specify">
       </section>
 
       <section class="question">
-        <label class="question-title">How familiar are you with databases? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="entry.234012409" value="Beginner" required> Beginner</label>
-          <label class="option"><input type="radio" name="entry.234012409" value="Intermediate"> Intermediate</label>
-          <label class="option"><input type="radio" name="entry.234012409" value="Expert"> Expert</label>
-        </div>
-      </section>
-
-      <section class="question">
-        <label class="question-title">How often do you attend our weekly talks? <span class="required">*</span></label>
+        <label class="question-title">How often do you attend the weekly TUMuchData talks in Garching? <span
+            class="required">*</span></label>
         <div class="options">
           <label class="option"><input type="radio" name="entry.1635458660" value="Every week" required> Every
             week</label>
@@ -376,93 +412,40 @@
       </section>
 
       <section class="question">
-        <label class="question-title">How relevant are the talks for you? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="entry.1962547667" value="Highly relevant" required> Highly
-            relevant</label>
-          <label class="option"><input type="radio" name="entry.1962547667" value="Medium relevance"> Medium
-            relevance</label>
-          <label class="option"><input type="radio" name="entry.1962547667" value="Not so relevant"> Not so
-            relevant</label>
-        </div>
+        <label class="question-title">What was your favorite talk and why?</label>
+        <textarea name="entry.1315214134"></textarea>
       </section>
 
       <section class="question">
-        <label class="question-title">What was your favorite talk?</label>
-        <input type="text" name="entry.1315214134">
-      </section>
-
-      <section class="question">
-        <label class="question-title">What topics would you like to see in future talks?</label>
+        <label class="question-title">Do you have requests for future talks? (e.g. specific paper (new or old), specifc
+          speaker (TUM or not) or a topic shift (more AI, more systems, ...))</label>
         <textarea name="entry.455957848"></textarea>
       </section>
 
       <section class="question">
-        <label class="question-title">How would you rate your current engagement with TUMuchData? <span
-            class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="entry.1666104231" value="High" required> High</label>
-          <label class="option"><input type="radio" name="entry.1666104231" value="Medium"> Medium</label>
-          <label class="option"><input type="radio" name="entry.1666104231" value="Low"> Low</label>
-        </div>
-      </section>
-
-      <section class="question">
-        <label class="question-title">How engaging do you find our current format? <span
-            class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="entry.543353498" value="Very engaging" required> Very
-            engaging</label>
-          <label class="option"><input type="radio" name="entry.543353498" value="Engaging"> Engaging</label>
-          <label class="option"><input type="radio" name="entry.543353498" value="Slightly engaging"> Slightly
-            engaging</label>
-          <label class="option"><input type="radio" name="entry.543353498" value="Not engaging at all"> Not engaging at
-            all</label>
-        </div>
-      </section>
-
-      <section class="question">
-        <label class="question-title">What would make them more engaging?</label>
+        <label class="question-title">What would increase your interaction with the community? (e.g., more/different
+          community events)</label>
         <textarea name="entry.481471412"></textarea>
       </section>
 
       <section class="question">
-        <label class="question-title">Where did you hear about us? <span class="required">*</span></label>
-        <div class="options">
-          <label class="option"><input type="radio" name="entry.439637748" value="LinkedIn" required> LinkedIn</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="WhatsApp"> WhatsApp</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="Signal"> Signal</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="University advertisement"> University
-            advertisement</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="Poster/flyer on campus"> Poster/flyer
-            on campus</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="Other students"> Other
-            students</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="Lecture promotion"> Lecture
-            promotion</label>
-          <label class="option"><input type="radio" name="entry.439637748" value="__other_option__"
-              data-other-target="heard-about-other"> Other</label>
-        </div>
-        <input class="other-input" id="heard-about-other" type="text" name="entry.439637748.other_option_response"
-          placeholder="Please specify">
-      </section>
-
-      <section class="question">
-        <label class="question-title">Please share any additional thoughts, suggestions, or feedback you would like us
-          to know.</label>
+        <label class="question-title">Please share any additional thoughts, suggestions, or feedback with us here
+          :-)</label>
         <textarea name="entry.611480748"></textarea>
       </section>
 
-      <!-- Submit + Clear form row -->
+      <!-- Submit row -->
       <div class="form-actions">
         <button type="submit">Submit feedback</button>
-        <button type="button" class="clear-btn" id="clear-btn">Clear form</button>
       </div>
 
       <p id="submit-status" role="status" aria-live="polite"></p>
 
       <input type="hidden" name="fvv" value="1">
+      <input type="hidden" name="partialResponse" value='[null,null,"5083055561827902438"]'>
       <input type="hidden" name="pageHistory" value="0">
+      <input type="hidden" name="fbzx" value="5083055561827902438">
+      <input type="hidden" name="submissionTimestamp" value="-1">
 
       <p class="note">
         Your answers are submitted to the official TUMuchData Google Form.
@@ -603,8 +586,8 @@
     const submitButton = form.querySelector("button[type='submit']");
     const submitStatus = document.getElementById("submit-status");
     const hiddenIframe = document.querySelector("iframe[name='hidden_iframe']");
-    const clearBtn = document.getElementById("clear-btn");
     const otherRadios = form.querySelectorAll("[data-other-target]");
+    const requiredCheckboxes = form.querySelectorAll("[data-required-group]");
     let hasSubmitted = false;
     let submitTimeout;
 
@@ -618,15 +601,22 @@
       });
     }
 
-    form.addEventListener("change", syncOtherInputs);
-    syncOtherInputs();
+    function syncRequiredCheckboxes() {
+      const groups = [...new Set([...requiredCheckboxes].map((checkbox) => checkbox.dataset.requiredGroup))];
 
-    clearBtn.addEventListener("click", function () {
-      form.reset();
-      syncOtherInputs();
-      submitStatus.textContent = "";
-      submitStatus.classList.remove("is-visible", "is-error");
-    });
+      groups.forEach((group) => {
+        const checkboxes = form.querySelectorAll(`[data-required-group="${group}"]`);
+        const hasChecked = [...checkboxes].some((checkbox) => checkbox.checked);
+        checkboxes.forEach((checkbox, index) => {
+          checkbox.setCustomValidity(!hasChecked && index === 0 ? "Please select at least one option." : "");
+        });
+      });
+    }
+
+    form.addEventListener("change", syncOtherInputs);
+    form.addEventListener("change", syncRequiredCheckboxes);
+    syncOtherInputs();
+    syncRequiredCheckboxes();
 
     hiddenIframe.addEventListener("load", function () {
       if (!hasSubmitted) return;
@@ -638,6 +628,8 @@
     });
 
     form.addEventListener("submit", function () {
+      syncRequiredCheckboxes();
+
       hasSubmitted = true;
       submitButton.disabled = true;
       submitStatus.textContent = "Submitting...";
