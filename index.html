@@ -6,10 +6,10 @@
   <meta name="description" content="Senad-Leandro Lemes Galera's personal website, explored through SQL.">
   <meta name="theme-color" content="#0b0b0b">
   <title>Senad-Leandro · SQL</title>
-  <link rel="stylesheet" href="home.css?v=11">
+  <link rel="stylesheet" href="home.css?v=12">
   <script src="site-data.js?v=5" defer></script>
   <script src="sql-core.js?v=4" defer></script>
-  <script src="home.js?v=3" defer></script>
+  <script src="home.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#query-input">Skip to SQL input</a>
@@ -24,7 +24,7 @@
         <nav class="profile-links" aria-label="CV and profiles"><a href="MainCV.pdf">CV</a><a href="https://www.linkedin.com/in/senad-leandro-lemes-galera-91951321b/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/sl-badcoder" target="_blank" rel="noreferrer">GitHub</a><a href="https://scholar.google.com/citations?hl=de&amp;user=h24d7kYAAAAJ" target="_blank" rel="noreferrer">Scholar</a></nav>
       </div>
       <form id="query-form" class="query-form" autocomplete="off">
-        <div class="query-line"><label for="query-input" class="editor-label">senad.db&gt;</label><input id="query-input" name="query" type="text" value="SELECT name, role, location, languages FROM me;" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="query-hint" maxlength="180"><button type="submit" class="run-button">Run ↵</button></div>
+        <div class="query-line"><label for="query-input" class="editor-label">senad.db&gt;</label><input id="query-input" name="query" type="text" value="SELECT name, role, location, languages FROM me;" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" enterkeyhint="go" aria-describedby="query-hint" maxlength="180"><button type="submit" class="run-button">Run ↵</button></div>
         <p class="sr-only" id="query-hint">Press Enter to run a query. Press Alt plus Up or Down arrow for query history.</p>
       </form>
       <section class="result-area" aria-label="SQL results">
@@ -39,7 +39,6 @@
         <button type="button" data-query="SELECT course, institution, period, summary FROM teaching;">teaching</button>
         <button type="button" data-query="SELECT title, topic, language, summary, link FROM writing;">writing</button>
         <button type="button" data-query="SELECT title, author, status, progress FROM reading;">reading</button>
-        <button type="button" data-query="SELECT title, topic, summary FROM videos;">videos</button>
       </nav>
     </div>
   </main>

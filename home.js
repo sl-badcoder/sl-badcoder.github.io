@@ -11,15 +11,20 @@
   function makeTable(result) {
     const table = document.createElement("table");
     table.className = "result-table";
+    table.setAttribute("role", "table");
     const caption = document.createElement("caption");
     caption.className = "sr-only";
     caption.textContent = result.kind === "select" ? "Rows from " + result.table : "Query results";
     table.append(caption);
     const head = document.createElement("thead");
+    head.setAttribute("role", "rowgroup");
     const headRow = document.createElement("tr");
-    result.columns.forEach(column => {
+    headRow.setAttribute("role", "row");
+    result.columns.forEach((column, index) => {
       const th = document.createElement("th");
       th.scope = "col";
+      th.id = "result-column-" + index;
+      th.setAttribute("role", "columnheader");
       th.textContent = column;
       headRow.append(th);
     });
@@ -27,10 +32,20 @@
     table.append(head);
 
     const body = document.createElement("tbody");
+    body.setAttribute("role", "rowgroup");
     result.rows.forEach(row => {
       const tr = document.createElement("tr");
-      result.columns.forEach(column => {
+      tr.setAttribute("role", "row");
+      result.columns.forEach((column, index) => {
         const td = document.createElement("td");
+        td.setAttribute("role", "cell");
+        td.setAttribute("headers", "result-column-" + index);
+        const label = document.createElement("span");
+        label.className = "mobile-column-label";
+        label.setAttribute("aria-hidden", "true");
+        label.textContent = column;
+        const value = document.createElement("span");
+        value.className = "cell-value";
         const post = result.kind === "select" && (column === "link" || column === "writing.link")
           ? window.siteData.writing.find(item => item.link === row[column]) : null;
         const project = result.kind === "select" && (column === "link" || column === "projects.link") && row[column]
@@ -44,10 +59,11 @@
             link.target = "_blank";
             link.rel = "noreferrer";
           }
-          td.append(link);
+          value.append(link);
         } else {
-          td.textContent = row[column];
+          value.textContent = row[column];
         }
+        td.append(label, value);
         tr.append(td);
       });
       body.append(tr);
@@ -130,9 +146,9 @@
   });
 
   document.querySelectorAll("[data-query]").forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", event => {
       execute(button.dataset.query);
-      input.focus();
+      if (event.detail === 0 || window.matchMedia("(pointer: fine)").matches) input.focus();
     });
   });
 
