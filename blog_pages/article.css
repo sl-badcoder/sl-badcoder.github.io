@@ -1,0 +1,29 @@
+:root { color-scheme: light; font-family: Georgia, "Times New Roman", serif; color: #202020; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 18px; line-height: 1.75; }
+.article-shell, .dictionary-shell { width: min(76ch, calc(100% - 40px)); margin: 60px auto 90px; }
+h1, h2, h3, label, button, input { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1 { margin: 0 0 32px; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; letter-spacing: -.035em; }
+h2 { margin: 40px 0 16px; font-size: 1.5rem; line-height: 1.35; }
+h3 { margin: 28px 0 12px; font-size: 1.15rem; line-height: 1.4; }
+p { margin: 0 0 20px; }
+a { color: #202020; text-underline-offset: 3px; }
+a:hover { color: #555; }
+:focus-visible { outline: 2px solid #202020; outline-offset: 4px; }
+hr { border: 0; border-top: 1px solid #d5d5d5; margin: 32px 0; }
+img { display: block; max-width: 100%; height: auto; margin: 24px auto; }
+article { overflow-wrap: anywhere; }
+.dictionary-hero { margin-bottom: 32px; }
+.dictionary-tools { margin: 0 0 36px; padding: 20px 0; border-top: 1px solid #d5d5d5; border-bottom: 1px solid #d5d5d5; font: 14px/1.6 system-ui, sans-serif; }
+.dictionary-tools label { display: block; margin-bottom: 8px; font-weight: 700; }
+.dictionary-search { width: 100%; padding: 10px 12px; border: 1px solid #999; border-radius: 3px; background: #fff; color: #202020; font-size: 16px; }
+.dictionary-count { margin: 10px 0; color: #555; }
+.alphabet-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.alphabet-filter button { min-width: 30px; min-height: 30px; padding: 3px 8px; border: 1px solid #aaa; border-radius: 3px; background: #fff; color: #202020; cursor: pointer; }
+.alphabet-filter button:hover, .alphabet-filter .is-active { background: #202020; color: #fff; }
+.term-index { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 16px; }
+.dict-entry { margin: 24px 0; scroll-margin-top: 20px; }
+.dict-entry > b:first-child { font-family: system-ui, sans-serif; }
+.is-hidden { display: none; }
+@media (max-width: 600px) { body { font-size: 17px; } .article-shell, .dictionary-shell { width: calc(100% - 32px); margin-top: 32px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

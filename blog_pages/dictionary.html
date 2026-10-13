@@ -4,22 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary</title>
-    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="article.css?v=1">
 </head>
 <body class="dictionary-page">
-    <div class="site-shell">
-        <header class="topbar">
-            <a class="brand" href="../index2.html">
-                <span class="brand-mark">SL</span>
-                <span>SL blog</span>
-            </a>
-            <nav class="nav-links" aria-label="Primary">
-                <a href="../index2.html#blogs">Blogs</a>
-                <a href="../index2.html#videos">Videos</a>
-                <a href="mailto:sl.blog.post0@gmail.com">Mail</a>
-            </nav>
-        </header>
-    </div>
     <main class="dictionary-shell">
     <section class="dictionary-hero">
     <h1>Dictionary</h1>
@@ -35,17 +22,17 @@
     <br>
     <b>RAM</b>
     <br>
-    Random access memory which is mostly used for implementing main memory 
-    offers a grid storage where each item can be accessed in a random fashion 
-    without decreasing performance (almost). Accesing a whole line is faster than accessing 
-    single items in the grid. When switching between lines a signal is triggered which 
+    Random access memory which is mostly used for implementing main memory
+    offers a grid storage where each item can be accessed in a random fashion
+    without decreasing performance (almost). Accesing a whole line is faster than accessing
+    single items in the grid. When switching between lines a signal is triggered which
     induces extra runtime.
     <br>
     <br>
     <b>ROM</b>
     <br>
-    Read only memory is mostly used for storing the operating 
-    system which lets the user start the computer, but not overwriting 
+    Read only memory is mostly used for storing the operating
+    system which lets the user start the computer, but not overwriting
     the heart of his computer. There are types of ROM which cannot be erased
     (mask ROM integrated circuit) and types which can be erased (EPROM and EEPROM).
 
@@ -53,7 +40,7 @@
     <br>
     <b>NUMA</b>
     <br>
-    Non-uniform Memory Access is a type of memory-architecture, where 
+    Non-uniform Memory Access is a type of memory-architecture, where
     each core got its own Memory. Accessing neighbouring memories introduces
     so called hops. Each additional needed hop adds extra latency.
     <br>
@@ -66,25 +53,25 @@
     <br>
     <b>EEPROM</b>
     <br>
-    Electrically Erasable Programmable Read-Only Memory often 
-    stores the operating system. To fasten up the start-up process 
-    the operating system is often still loaded into main memory. 
-    
+    Electrically Erasable Programmable Read-Only Memory often
+    stores the operating system. To fasten up the start-up process
+    the operating system is often still loaded into main memory.
+
     <hr>
     <h3>1.2 Caches</h3>
-    This sub chapter is mostly based on the paper what every programmer 
-    should know about memory so in case you want to get a deeper 
-    understanding of the presented topics please investigate it. [1] 
+    This sub chapter is mostly based on the paper what every programmer
+    should know about memory so in case you want to get a deeper
+    understanding of the presented topics please investigate it. [1]
     The images in this chapter are also all from this paper,
-     so we don't claim any of these given images to be ours. 
+     so we don't claim any of these given images to be ours.
     <br>
     <br>
     <b>TLB</b>
     <br>keywords: SRAM, virtual memory
     <br>
-    A translation look-aside buffer is a small SRAM fully associative cache 
-    that is mostly used to translate virtual memory addresses to actual 
-    physical addresses. The TLB can be accessed parallel and normally 
+    A translation look-aside buffer is a small SRAM fully associative cache
+    that is mostly used to translate virtual memory addresses to actual
+    physical addresses. The TLB can be accessed parallel and normally
     doesn’t contain more than 1024 entries.
     <br>
     <br>
@@ -93,7 +80,7 @@
     <br>
     <b>DIRECT-MAPPED CACHE</b>
     <br>keywords: simple, high conflict rate
-    <br> 
+    <br>
     stores each cache line at exact one position. The direct-mapped cache A direct-mapped cache splits the Tag and Data into two separate sets. They can be accessed using the Set bit working with a Multiplexer. Only a single comparator is used because every cache line can only be used by similar addresses. The multiplexer, which is here the growing part, is relatively cheap it only needs O(log N) number of transistors as it becomes bigger. The drawback of this method is, that if the addresses are not evenly distributed a high conflict rate will be seen because some cache lines will be heavily used while others will only get a small amount of data.
     <br>
     <img src="../utils/directmappedcache.png" alt="Direct-mapped-cache" width="200" height="150" class="center-image">
@@ -150,13 +137,13 @@ specific information about the topics, please look them up in the book.
 <b>NAND FLASH</b>
 <br>
 <br>
-Today most SSDs are implemented using NAND Flash which can usually store 1 bit per cell. NAND Flashs is connected to NAND Words which can be accessed by one transistor up front and one at the end. A logical page is the smallest accessible unit for reading and writing and a block is the smallest unit to be erasable. One block consists e.g. of 64 Pages. 
+Today most SSDs are implemented using NAND Flash which can usually store 1 bit per cell. NAND Flashs is connected to NAND Words which can be accessed by one transistor up front and one at the end. A logical page is the smallest accessible unit for reading and writing and a block is the smallest unit to be erasable. One block consists e.g. of 64 Pages.
 <br>
 <br>
 <b>Memory Controller</b>
 <br>
 <br>
-A memory controller is also implemented on the SSD and like the name says controls how the memory is working. It has two main purposes. First it needs to provide the most suitable interface and protocol towards the host and the flash memory. Second it must handle data, maximize transfer speed, data integrity and information retention. Usually, an 8–16-bit processor is used to implement this. 
+A memory controller is also implemented on the SSD and like the name says controls how the memory is working. It has two main purposes. First it needs to provide the most suitable interface and protocol towards the host and the flash memory. Second it must handle data, maximize transfer speed, data integrity and information retention. Usually, an 8–16-bit processor is used to implement this.
 <br>
 <br>
 <b>Wear Leveling</b>
@@ -168,7 +155,7 @@ Wear leveling is a mechanism to distribute the use of pages fairly over the whol
 <b>Garbage Collection</b>
 <br>Keywords: random write
 <br>
-When the number of free sectors falls below a certain level garbage collection is used to compact and erase blocks. Garbage collection is expensive performance wise and should be performed in the background. Especially a big drop in performance occurs when we run random writes on near-fully SSDs. Because then we often have to use garbage collection to erase the full blocks. 
+When the number of free sectors falls below a certain level garbage collection is used to compact and erase blocks. Garbage collection is expensive performance wise and should be performed in the background. Especially a big drop in performance occurs when we run random writes on near-fully SSDs. Because then we often have to use garbage collection to erase the full blocks.
 <br>
 <br>
 <b>PCIe</b>
@@ -186,13 +173,13 @@ Compute Express Link is a new standard protocol which enables the access of main
 <b>SLC</b>
 <br>
 <br>
-A single level cell can store 1 bit and is used in NAND flash arrays. 
+A single level cell can store 1 bit and is used in NAND flash arrays.
 <br>
 <br>
 <b>MLC</b>
 <br>
 <br>
-A multi-level cell can how the name suggests store multiple bits precisely it can store 2 bits. 
+A multi-level cell can how the name suggests store multiple bits precisely it can store 2 bits.
 <br>
 <br>
 <b>SATA</b>
@@ -205,21 +192,21 @@ Sata devices are a type of old-fashioned SSDs compared to SAS it is the cheaper 
 <b>SAS</b>
 <br>
 <br>
-Sas drivers are fast and offer more features than SATA SSDs. Additionally, it supports link aggregation – wide porting. Link aggregation combines multiple physical cables into a single logical cable to increase bandwidth and provide redundancy and increase fault tolerance. Wide porting is a similar concept but is more focused on high-performance computing. 
+Sas drivers are fast and offer more features than SATA SSDs. Additionally, it supports link aggregation – wide porting. Link aggregation combines multiple physical cables into a single logical cable to increase bandwidth and provide redundancy and increase fault tolerance. Wide porting is a similar concept but is more focused on high-performance computing.
 
 <br>
 <br>
 <b>NVMe</b>
 <br>
 <br>
-Non-volatile memory express is a scalable interface protocol to access PCIe SSDs with a standardized protocol. Especially offering way more queues than old protocols like SAS or SATA makes it possible to exploit the full performance increase made by PCIe. 
+Non-volatile memory express is a scalable interface protocol to access PCIe SSDs with a standardized protocol. Especially offering way more queues than old protocols like SAS or SATA makes it possible to exploit the full performance increase made by PCIe.
 
 <br>
 <br>
 <b>Workload Types (random, sequential)</b>
 <br>
 <br>
-There exists two types of patterns with whom you can access SSDs. You can access it in an random manner. But especially random writes have a big performance problem when the SSD gets full due to garbage collection. [4] Even though SSD should be able to perform logically random and sequential access with the same performance the hardware is still assymetric[5]. Especially loading full sequential blocks with needing less signals then accessing random pages improves the sequential workload performance. 
+There exists two types of patterns with whom you can access SSDs. You can access it in an random manner. But especially random writes have a big performance problem when the SSD gets full due to garbage collection. [4] Even though SSD should be able to perform logically random and sequential access with the same performance the hardware is still assymetric[5]. Especially loading full sequential blocks with needing less signals then accessing random pages improves the sequential workload performance.
 <hr>
 
 <h2>2. Languages</h2>
@@ -229,29 +216,29 @@ There exists two types of patterns with whom you can access SSDs. You can access
 <b>CPP</b>
 <br>
 <br>
-CPP is a high/low-level language which still offers manually handling memory access via allocate functions. CPP also offers object-oriented programming features and is nowadays one of the fastest languages to use due to its near to hardware and memory programming. 
+CPP is a high/low-level language which still offers manually handling memory access via allocate functions. CPP also offers object-oriented programming features and is nowadays one of the fastest languages to use due to its near to hardware and memory programming.
 <br>
 <br>
 <b>JAVA</b>
 <br>
 <br>
-Java is a programming language which is famous for its garbage collector which distinct it from CPP and other more low-level languages where memory can/must be handled manually. Additionally, Java is Object-oriented and to run JAVA it will run in a sandbox which adds additional security features. Java uses UTF-16 for encoding characters and offers built in String datatype. 
+Java is a programming language which is famous for its garbage collector which distinct it from CPP and other more low-level languages where memory can/must be handled manually. Additionally, Java is Object-oriented and to run JAVA it will run in a sandbox which adds additional security features. Java uses UTF-16 for encoding characters and offers built in String datatype.
 <br>
 <br>
 <b>PYTHON</b>
 <br>
 <br>
-Python is the language mostly used for AI/ML programming because it offers good libraries like numpy, pandas, pytorch, etc. which all are widely used in the field. It is a really high-level language and has its advantages in scientific computing but is really slow compared to JAVA and CPP. Python is mostly built up on underlying CPP code. 
+Python is the language mostly used for AI/ML programming because it offers good libraries like numpy, pandas, pytorch, etc. which all are widely used in the field. It is a really high-level language and has its advantages in scientific computing but is really slow compared to JAVA and CPP. Python is mostly built up on underlying CPP code.
 
 <br>
 <br>
 <b>SQL</b>
 <br>
 <br>
-The structured query language is a declarative programming language to get information out of a database system. The also called sequel language was developed for simplicity and to give access to databases to people without proper informatics background. 
+The structured query language is a declarative programming language to get information out of a database system. The also called sequel language was developed for simplicity and to give access to databases to people without proper informatics background.
 <hr>
 <h2>3. Databases</h2>
-This chapter focuses on the basics of databases and the main algorithms and methods used implementing the standard databases. 
+This chapter focuses on the basics of databases and the main algorithms and methods used implementing the standard databases.
 
 <br>
 <br>
@@ -273,7 +260,7 @@ Graph databases are mostly used for complex queries that would Need complex join
 <b>ACID</b>
 <br>
 <br>
-Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there are no other users) and Durability (I can use the system anytime). 
+Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there are no other users) and Durability (I can use the system anytime).
 
 <h2>Access Path</h2>
 <br>
@@ -281,7 +268,7 @@ Atomicity (all or nothing), Consistency (everywhere the same), Isolation (there 
 <b>Struct</b>
 <br>
 <br>
-In c/cpp simply the ordering of the needed bits. 
+In c/cpp simply the ordering of the needed bits.
 <br>
 <img src="../utils/STRUCT.png" alt="STRUCT" width="250" height="50" class="center-image">
 
@@ -296,27 +283,27 @@ Fill up the struct with bits to match a certain restriction. Normally implemente
 <b>INDEXES</b>
 <br>
 <br>
-Data structure is mostly implemented as a search tree, which only represents the key values and offers a more efficient search for the underlying tuples. 
+Data structure is mostly implemented as a search tree, which only represents the key values and offers a more efficient search for the underlying tuples.
 <br>
 <br>
 <b>RELATIONS</b>
 <br>
 <br>
-How data has a connection to other data. A sample relation would be having all professors in one table. 
+How data has a connection to other data. A sample relation would be having all professors in one table.
 
 <br>
 <br>
 <b>FREE SPACE MANAGEMENT</b>
 <br>
 <br>
-Free space management is a mechanism which tries to maximize the available space by using techniques like compression. There are multiple ways to implement it. We can just safe 2 bits to define how full a given page is and store it in the dictionary. 
+Free space management is a mechanism which tries to maximize the available space by using techniques like compression. There are multiple ways to implement it. We can just safe 2 bits to define how full a given page is and store it in the dictionary.
 
 <br>
 <br>
 <b>VOLCANO-STYLE-ITERATION</b>
 <br>
 <br>
-Query processing is implemented in a pipeline manner. Tuples will be sent through different stages where a different relational operator is applied. Based on the fundamental principle of data flow. 
+Query processing is implemented in a pipeline manner. Tuples will be sent through different stages where a different relational operator is applied. Based on the fundamental principle of data flow.
 <br>
 <br>
 <b>VECTOR-AT-A-TIME</b>
@@ -328,21 +315,21 @@ Process multiple vectors at a time instead of a single tuple. This offers SIMD i
 <b>MATERALIZATION-VIEW</b>
 <br>
 <br>
-Process whole columns at a time but this has the problem that you have more complex query plans than in other times. 
+Process whole columns at a time but this has the problem that you have more complex query plans than in other times.
 
 <br>
 <br>
 <b>SHADOW PAGING</b>
 <br>keywords: dbms, old
 <br>
-Shadow paging refers to the process where for each page that will be changed a new copy is stored where the actual change will take place. This offers the possibility to always have the clean page on the disk and only the dirty page is stored as a copy. This process is for example used when including mmap in your database to offer transactional safety. [6] The drawbacks of this method are that you need additional memory space due to having an additional copy. Another drawback is that your memory is not contiguous anymore which slows sequential access. For example, if first your page order was [1,2,3,4] and you write to page 3 with a copy at page 8. After the process the page ordering will look like this: [1,2,8,4]. This was especially for HDDs a big drawback but since random access should be as fast as sequential access for SSDs now maybe shadow copying can come back in trend. 
+Shadow paging refers to the process where for each page that will be changed a new copy is stored where the actual change will take place. This offers the possibility to always have the clean page on the disk and only the dirty page is stored as a copy. This process is for example used when including mmap in your database to offer transactional safety. [6] The drawbacks of this method are that you need additional memory space due to having an additional copy. Another drawback is that your memory is not contiguous anymore which slows sequential access. For example, if first your page order was [1,2,3,4] and you write to page 3 with a copy at page 8. After the process the page ordering will look like this: [1,2,8,4]. This was especially for HDDs a big drawback but since random access should be as fast as sequential access for SSDs now maybe shadow copying can come back in trend.
 
 <br>
 <br>
 <b>DELTA FILES</b>
 <br>keywords: shadow paging
 <br>
-Delta files have the same approach as shadow paging but instead of interacting on the whole memory for all files like in shadow paging. Delta files use a separate memory space to either store the clean or the dirty copies. The main advantage overshadow paging is that it works through the separate memory space after the principles of locality. Another advantage is that having these separate spaces does not mix dirty and clean pages. But like every method, these files have several drawbacks. First, the number of I/O increases. When you abort/commit changes it becomes more expensive. Lastly, keeping track of these delta pages is non-trivial. 
+Delta files have the same approach as shadow paging but instead of interacting on the whole memory for all files like in shadow paging. Delta files use a separate memory space to either store the clean or the dirty copies. The main advantage overshadow paging is that it works through the separate memory space after the principles of locality. Another advantage is that having these separate spaces does not mix dirty and clean pages. But like every method, these files have several drawbacks. First, the number of I/O increases. When you abort/commit changes it becomes more expensive. Lastly, keeping track of these delta pages is non-trivial.
 
 
 <br>
@@ -350,28 +337,28 @@ Delta files have the same approach as shadow paging but instead of interacting o
 <b>SEGMENT</b>
 <br>keywords: composition
 <br>
-A segment is a combination of more than one page. Segments are used since having page granularity is in most cases only useful for I/O operations. So, in other cases for example indexes, relations, and free space management conclude multiple pages. Segments are implemented using virtual addresses to access these blocks of pages. There are many types of segments. Private vs. Public, Temporary vs. Permanent, Automatic vs. Manual, and with recovery vs. without recovery. 
+A segment is a combination of more than one page. Segments are used since having page granularity is in most cases only useful for I/O operations. So, in other cases for example indexes, relations, and free space management conclude multiple pages. Segments are implemented using virtual addresses to access these blocks of pages. There are many types of segments. Private vs. Public, Temporary vs. Permanent, Automatic vs. Manual, and with recovery vs. without recovery.
 
 <br>
 <br>
 <b>STATIC FILE MAPPING</b>
 <br>keywords: simple, complex resizing
 <br>
-When using static file mapping all pages are stored in a big catalogue. The catalog is simply just a pointer that goes through the whole catalog and looks for the given page. The big problem when using this approach is that the resizing will be very difficult because the memory is not contiguous anymore and some pages may need to be reordered or placed at another place. 
+When using static file mapping all pages are stored in a big catalogue. The catalog is simply just a pointer that goes through the whole catalog and looks for the given page. The big problem when using this approach is that the resizing will be very difficult because the memory is not contiguous anymore and some pages may need to be reordered or placed at another place.
 
 <br>
 <br>
 <b>DYNAMIC EXTENT-MAPPING</b>
 <br>keywords: flexible, administrative overhead
 <br>
-When using dynamic extent mapping the pages are not accessed directly, they are more accessed using a higher abstraction layer the catalog only points then to the first element of the given segment. This offers simpler resizing because the pointer can point to non-contiguous memory. Often the pages are accessed via a 2<sup>N</sup> pattern so that the not arbitrarily large number of addresses can be stored. 
+When using dynamic extent mapping the pages are not accessed directly, they are more accessed using a higher abstraction layer the catalog only points then to the first element of the given segment. This offers simpler resizing because the pointer can point to non-contiguous memory. Often the pages are accessed via a 2<sup>N</sup> pattern so that the not arbitrarily large number of addresses can be stored.
 
 <br>
 <br>
 <b>DYNAMIC BLOCK-MAPPING</b>
 <br>keywords: growth handling, overhead
 <br>
-The dynamic block mapping approach maps every block to a pointer in the catalog which lets the catalog grow indefinitely. Also, the actual blocks can lay anywhere on the physical layer and can still be accessed. 
+The dynamic block mapping approach maps every block to a pointer in the catalog which lets the catalog grow indefinitely. Also, the actual blocks can lay anywhere on the physical layer and can still be accessed.
 
 <hr>
 
@@ -395,14 +382,14 @@ Least frequently used keeps the amount of how much each page was accessed in min
 <b>FIFO</b>
 <br>keywords: simple, no locality
 <br>
-First in first out, the most common and simplest algorithm of them all. This method can be implemented using a single linked list, where the new entry will add at the tail and the head will be removed. The drawback of this method is that locality is not included because, after the locality principle, some pages will be accessed more frequently than others, and pages that are loaded into the buffer normally should stay there for a longer time.  
+First in first out, the most common and simplest algorithm of them all. This method can be implemented using a single linked list, where the new entry will add at the tail and the head will be removed. The drawback of this method is that locality is not included because, after the locality principle, some pages will be accessed more frequently than others, and pages that are loaded into the buffer normally should stay there for a longer time.
 
 <br>
 <br>
 <b>SECOND CHANCE/CLOCK</b>
 <br>keywords: complex, fast
 <br>
-The second change is like the last recently used strategy. You can implement this method by using a circular buffer queue and a pointer. The pointer simply goes through the queue and checks each element for its reference bit. If the bit equals 1 the bit will be flipped, and the pointer will go to the next queue entry. If the bit is set to zero, the page will be evicted and a new page will be loaded into this entry. When a page is accessed the second chance bit is set to 1. 
+The second change is like the last recently used strategy. You can implement this method by using a circular buffer queue and a pointer. The pointer simply goes through the queue and checks each element for its reference bit. If the bit equals 1 the bit will be flipped, and the pointer will go to the next queue entry. If the bit is set to zero, the page will be evicted and a new page will be loaded into this entry. When a page is accessed the second chance bit is set to 1.
 
 <br>
 <br>
@@ -416,7 +403,7 @@ Least recently used is a replacement strategy used in several areas of computer 
 <b>NLRU</b>
 <br>keywords: simple, fast, single bit
 <br>
-The strategy not most recently used is also a simple mechanism to implement a fast replacement strategy. The most recently used line can be indicated by using a single bit. So the logic only needs to look at that single bit and can directly evict another line. 
+The strategy not most recently used is also a simple mechanism to implement a fast replacement strategy. The most recently used line can be indicated by using a single bit. So the logic only needs to look at that single bit and can directly evict another line.
 
 <h2>Locking</h2>
 
@@ -425,7 +412,7 @@ The strategy not most recently used is also a simple mechanism to implement a fa
 <b>SPIN LOCK</b>
 <br>keywords: loading
 <br>
-When using a spin lock, when we see that the attribute we wanted to access is locked we start a so-called spin and try to lock until the locked attributes gets unlocked. 
+When using a spin lock, when we see that the attribute we wanted to access is locked we start a so-called spin and try to lock until the locked attributes gets unlocked.
 
 <h2>Recovery</h2>
 <br>
@@ -443,7 +430,7 @@ When using a spin lock, when we see that the attribute we wanted to access is lo
 <br>
 <br>
 
-Zipf is a distribution where each number of occurences of an element depends on its rank. The Object with the lowest rank will appear the most. The zipf factor defines how fast the number of occurences will drop between the ranks. A higher number means faster drop, which means that the element with rank n-1 (n > 1) will occur way more often than the element with rank n.
+Zipf is a distribution where each number of occurences of an element depends on its rank. The Object with the lowest rank will appear the most. The zipf factor defines how fast the number of occurences will drop between the ranks. A higher number means faster drop, which means that the element with rank n-1 (n &gt; 1) will occur way more often than the element with rank n.
 
 <hr>
 <h2>4. Artificial Languages</h2>
@@ -468,7 +455,7 @@ Hyperparameter are the parameters which classify which model we use they are not
 <b>kNN</b>
 <br>
 <br>
-K nearest neighbor is an algorithm for clustering where you decide a class for a given datapoint based on its k nearest neighbors. The smaller the k the more prune it is to outliers. 
+K nearest neighbor is an algorithm for clustering where you decide a class for a given datapoint based on its k nearest neighbors. The smaller the k the more prune it is to outliers.
 
 <br>
 <br>
@@ -482,7 +469,7 @@ A decision tree is a method to classify a given dataset. By introducing if condi
 <b>RMSprop</b>
 <br>Keywords: quad ration
 <br>
-This gradient descent optimization helps us to get larger steps in flat regions and smaller steps in steep regions by dividing through the quad ration of the gradients. When the step size is small (flat region) the value under the fraction will be smaller so the overall value larger. When the step size is big (steep region) the quad ration will be big and the new step size will be smaller than before. 
+This gradient descent optimization helps us to get larger steps in flat regions and smaller steps in steep regions by dividing through the quad ration of the gradients. When the step size is small (flat region) the value under the fraction will be smaller so the overall value larger. When the step size is big (steep region) the quad ration will be big and the new step size will be smaller than before.
 
 
 <br>
@@ -521,14 +508,14 @@ Convolutional layers are layers where filters are applied to matrix input. These
 <b>OVERLAPPED POOLING</b>
 <br>Keywords: pooling
 <br>
-Overlapped pooling describes a method where the s < z which means that the stride size is smaller than the kernel size so to “pool” the whole matrix we need to overlap some pooling’s. Some values will have influence in distinct kernel maps. This method is slightly better against overfitting then when setting s = z according to [7].
+Overlapped pooling describes a method where the s &lt; z which means that the stride size is smaller than the kernel size so to “pool” the whole matrix we need to overlap some pooling’s. Some values will have influence in distinct kernel maps. This method is slightly better against overfitting then when setting s = z according to [7].
 
 <br>
 <br>
 <h3>References</h3>
 - [1] Ulrich Drepper. What every programmer should know about memory. https://people.freebsd.org/~lstewart/articles/cpumemory.pdf, 2024.<br>
 <br> - [2] Samsung. Over provisioning for samsung data center ssd. 03 2019.<br>
-<br>- [3] Pcie architecture. https://www.youtube.com/watch?v=caiREMKP0-E&list=PLZe4P0P_9Cosd0i2ha_QRdWlR1iZ0yVG4, 2024. <br>
+<br>- [3] Pcie architecture. https://www.youtube.com/watch?v=caiREMKP0-E&amp;list=PLZe4P0P_9Cosd0i2ha_QRdWlR1iZ0yVG4, 2024. <br>
 <br>- [4] lies, damn lies and ssd benchmarks. https://web.archive.org/web/
 20170413223914/http://www.seagate.com/nl/nl/tech-insights/
 lies-damn-lies-and-ssd-benchmark-master-ti/, 2024<br>

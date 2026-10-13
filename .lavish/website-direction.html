@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-lavish-annotate="off">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal site redesign · direction</title>
+  <style>
+    :root { --bg:#f5f7fb; --text:#172033; --muted:#667085; --line:#d9e0ec; --panel:#fff; --accent:#0f766e; --accent-soft:#d7f6f1; --gold:#b7791f; --sans:Inter,ui-sans-serif,system-ui,sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; padding:0 20px 72px; background:radial-gradient(circle at top right,rgba(183,121,31,.12),transparent 32rem),var(--bg); color:var(--text); font:16px/1.6 var(--sans); }
+    main { width:min(1120px,100%); margin:auto; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(2.2rem,5vw,4rem); line-height:1.06; letter-spacing:-.045em; margin-bottom:18px; }
+    h2 { font-size:1.45rem; letter-spacing:-.025em; }
+    h3 { font-size:1.1rem; }
+    a { color:var(--accent); }
+    .top { padding:56px 0 36px; border-bottom:1px solid var(--line); }
+    .eyebrow { color:var(--accent); font-size:.77rem; font-weight:900; letter-spacing:.15em; text-transform:uppercase; }
+    .intro { max-width:780px; color:#475467; font-size:1.12rem; }
+    .section { padding-top:35px; }
+    .references { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .ref,.option,.fact,.decision { background:var(--panel); border:1px solid var(--line); border-radius:12px; }
+    .ref { padding:17px; min-width:0; }
+    .ref p { color:var(--muted); font-size:.91rem; margin:8px 0 0; }
+    .options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+    .option { padding:20px; min-width:0; }
+    .option.recommended { border-color:var(--accent); box-shadow:0 18px 45px rgba(15,118,110,.09); }
+    .option-head { display:flex; gap:10px; align-items:center; justify-content:space-between; }
+    .badge { background:var(--accent-soft); color:#095d57; font-size:.7rem; font-weight:800; padding:3px 8px; border-radius:99px; white-space:nowrap; }
+    .mock { height:310px; overflow:hidden; border:1px solid #cbd5df; border-radius:8px; margin:16px 0; padding:16px; }
+    .mock-a { background:#f8faf8; }
+    .mock-b { background:#101a2d; color:#e9f4f1; }
+    .mock-nav { display:flex; justify-content:space-between; gap:10px; font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+    .mock-nav span:last-child { opacity:.55; }
+    .mock-hero { padding:27px 0 13px; font-size:clamp(1.4rem,2.5vw,2rem); line-height:1.15; font-weight:800; letter-spacing:-.05em; }
+    .mock-kicker { font-size:.68rem; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:.15em; }
+    .mock-b .mock-kicker { color:#6ce4b9; }
+    .mock-copy { max-width:310px; margin:5px 0 14px; font-size:.76rem; line-height:1.4; opacity:.72; }
+    .mock-chips { display:flex; gap:5px; flex-wrap:wrap; }
+    .mock-chips span { border:1px solid currentColor; border-radius:99px; opacity:.65; padding:2px 7px; font-size:.62rem; }
+    .mock-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; margin-top:22px; }
+    .mock-cards span { display:block; padding:10px 7px; min-height:70px; border:1px solid rgba(15,118,110,.25); border-radius:5px; background:#fff; font-size:.63rem; font-weight:750; }
+    .mock-b .mock-cards span { border-color:#497b78; background:#172c3d; }
+    .option ul { padding-left:20px; margin:12px 0 0; }
+    .option li { margin:5px 0; }
+    .tradeoff { color:var(--muted); font-size:.91rem; margin-top:14px; }
+    .facts { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .fact { padding:17px; min-width:0; }
+    .fact strong { color:var(--accent); display:block; margin-bottom:5px; }
+    .fact p { margin:0; color:var(--muted); font-size:.91rem; }
+    .decision { padding:24px; margin-top:35px; }
+    fieldset { border:0; margin:0; padding:0; }
+    legend { font-weight:800; margin-bottom:10px; }
+    label { display:block; padding:9px 0; cursor:pointer; }
+    input { accent-color:var(--accent); }
+    button { appearance:none; border:0; border-radius:8px; background:var(--accent); color:white; font:700 .95rem var(--sans); padding:11px 16px; margin-top:12px; cursor:pointer; }
+    button:hover { background:#0b5f59; }
+    .note { color:var(--muted); font-size:.88rem; }
+    @media(max-width:760px) { .references { grid-template-columns:repeat(2,minmax(0,1fr)); } .options,.facts { grid-template-columns:1fr; } .mock { height:300px; } }
+    @media(max-width:480px) { .references { grid-template-columns:1fr; } .top { padding-top:32px; } }
+  </style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <p class="eyebrow">Senad-Leandro · site direction</p>
+    <h1>A portfolio that feels alive<br>and stays easy to explore.</h1>
+    <p class="intro">I looked at standout personal sites, then mapped the useful ideas to your current static site and updated CV. The choice below sets the visual tone; both directions retain fast pages, readable writing, and straightforward GitHub Pages hosting.</p>
+  </header>
+
+  <section class="section">
+    <h2>What the reference sites do well</h2>
+    <div class="references">
+      <div class="ref"><a href="https://bruno-simon.com/" target="_blank" rel="noreferrer"><strong>Bruno Simon ↗</strong></a><p>A memorable, explorable world. Great inspiration for discovery, but a full 3D site would bury your research and writing.</p></div>
+      <div class="ref"><a href="https://www.joshwcomeau.com/animation/squash-and-stretch/" target="_blank" rel="noreferrer"><strong>Josh Comeau ↗</strong></a><p>Small interactions make technical ideas tangible. Best cue for project demos and restrained motion.</p></div>
+      <div class="ref"><a href="https://maggieappleton.com/" target="_blank" rel="noreferrer"><strong>Maggie Appleton ↗</strong></a><p>A personal knowledge garden with clear paths through essays and ideas. Good model for your blogs and reading list.</p></div>
+      <div class="ref"><a href="https://brittanychiang.com/" target="_blank" rel="noreferrer"><strong>Brittany Chiang ↗</strong></a><p>Work and writing stay prominent and scannable. Useful for your experience and research hierarchy.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Choose the feel</h2>
+    <div class="options">
+      <article class="option recommended">
+        <div class="option-head"><h3>01 · Research notebook</h3><span class="badge">Recommended</span></div>
+        <div class="mock mock-a" aria-label="Concept preview of research notebook direction">
+          <div class="mock-nav"><span>SL / Senad-Leandro</span><span>Work · Notes · About</span></div>
+          <div class="mock-hero">Making systems<br>work better.</div>
+          <div class="mock-kicker">Computer science · Munich</div>
+          <p class="mock-copy">Software engineer and TUM master's student exploring GPU memory, databases, and 3D reconstruction.</p>
+          <div class="mock-chips"><span>Research</span><span>Engineering</span><span>Writing</span></div>
+          <div class="mock-cards"><span>UVM performance<br>↗ Explore</span><span>ShapeDream<br>↗ Explore</span><span>From the notebook<br>↗ Read</span></div>
+        </div>
+        <p><strong>Interaction:</strong> project filters, expandable research details, reading progress, theme switch, and subtle reveal motion.</p>
+        <p class="tradeoff"><strong>Tradeoff:</strong> More editorial and calm than game-like. The projects carry the surprise.</p>
+      </article>
+      <article class="option">
+        <div class="option-head"><h3>02 · Systems terminal</h3></div>
+        <div class="mock mock-b" aria-label="Concept preview of systems terminal direction">
+          <div class="mock-nav"><span>senad@web:~$</span><span>01 / 02 / 03</span></div>
+          <div class="mock-hero">Hello, I'm Senad.<br>I build systems.</div>
+          <div class="mock-kicker">$ select work --interactive</div>
+          <p class="mock-copy">A dark, developer-flavored portfolio with a command palette and data-inspired project visualizations.</p>
+          <div class="mock-chips"><span>GPU</span><span>Storage</span><span>3D</span></div>
+          <div class="mock-cards"><span>&gt; UVM<br>open case study</span><span>&gt; ShapeDream<br>open case study</span><span>&gt; Writing<br>open notes</span></div>
+        </div>
+        <p><strong>Interaction:</strong> command palette, keyboard shortcuts, animated diagrams, project filters, and theme switch.</p>
+        <p class="tradeoff"><strong>Tradeoff:</strong> More distinctive and playful, with greater implementation and accessibility work.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Content I would update from your CV</h2>
+    <div class="facts">
+      <div class="fact"><strong>Current profile</strong><p>TUM MSc computer science student and software engineer at Lautersee GmbH in Munich.</p></div>
+      <div class="fact"><strong>Research front and center</strong><p>UVM memory management and ShapeDream get deeper project views, with the CV as a download.</p></div>
+      <div class="fact"><strong>Accurate details</strong><p>Use the CV's roughly 15% → 64% test coverage figure. Remove the age from the bio so it does not go stale.</p></div>
+    </div>
+    <p class="note" style="margin-top:14px">I would keep your personal interests, blog posts, teaching, books, and videos, but give visitors a clearer path through them. I would not put your phone number on the public page.</p>
+  </section>
+
+  <form class="decision" data-lavish-question="website-direction" onsubmit="event.preventDefault(); const value = new FormData(event.currentTarget).get('direction'); if (!value) return; window.lavish.queuePrompt('Build the personal website in the ' + value + ' direction, using MainCV.pdf for accurate content and preserving existing uncommitted work.', { tag:'choice', text:'Website direction: ' + value, element:event.currentTarget, data:{ question:'website-direction', answer:value } }); document.getElementById('queued').textContent='Choice queued. Press Send to Agent in Lavish to send it.';">
+    <fieldset>
+      <legend>Which direction should I build?</legend>
+      <label><input type="radio" name="direction" value="Research notebook" checked> Research notebook — calm, editorial, interactive projects</label>
+      <label><input type="radio" name="direction" value="Systems terminal"> Systems terminal — dark, playful, keyboard driven</label>
+    </fieldset>
+    <button type="submit">Queue my choice</button>
+    <p class="note" id="queued">You can also annotate a specific detail or ask for a hybrid.</p>
+  </form>
+</main>
+</body>
+</html>

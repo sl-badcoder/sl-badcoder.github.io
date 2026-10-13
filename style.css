@@ -281,6 +281,12 @@ h3 {
   padding: 2.5rem 0 4rem;
 }
 
+.section-note {
+  margin: -0.35rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -288,6 +294,9 @@ h3 {
 }
 
 .card-link {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: stretch;
   min-height: 190px;
   padding: 1.1rem;
   border: 1px solid rgba(23, 32, 51, 0.1);
@@ -321,6 +330,35 @@ h3 {
   font-size: 0.92rem;
 }
 
+.card-link > small:last-child {
+  align-self: start;
+}
+
+.skill-grid {
+  display: flex;
+  align-self: end;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.card-link .skill-grid span,
+.skill-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin: 0;
+  padding: 0.12rem 0.48rem;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
 .info-card {
   cursor: default;
 }
@@ -328,7 +366,7 @@ h3 {
 .flip-card {
   position: relative;
   display: block;
-  min-height: 260px;
+  min-height: 310px;
   color: inherit;
   cursor: pointer;
   perspective: 1200px;
@@ -345,7 +383,7 @@ h3 {
 
 .flip-inner {
   display: grid;
-  min-height: 260px;
+  min-height: 310px;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -362,7 +400,7 @@ h3 {
 .flip-face {
   grid-area: 1 / 1;
   width: 100%;
-  min-height: 260px;
+  min-height: 310px;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -417,6 +455,105 @@ h3 {
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-top: 1rem;
+}
+
+.book-table {
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: var(--radius);
+  background: var(--panel-solid);
+  box-shadow: 0 10px 30px rgba(18, 32, 56, 0.06);
+}
+
+.book-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 1.4fr) minmax(110px, 0.45fr) minmax(220px, 1fr);
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.book-table article.book-row:nth-of-type(n + 6) {
+  display: none;
+}
+
+.book-head {
+  border-top: 0;
+  background: rgba(233, 238, 247, 0.72);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.book-title strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.book-title small {
+  display: block;
+  margin-top: 0.24rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.book-status {
+  justify-self: start;
+  padding: 0.22rem 0.55rem;
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.book-status.is-finished {
+  border-color: rgba(11, 95, 89, 0.32);
+  background: #c9f7df;
+  color: #067647;
+}
+
+.book-status.is-queued {
+  border-color: rgba(183, 121, 31, 0.22);
+  background: #fff7e6;
+  color: #7a4a08;
+}
+
+.book-progress-cell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.book-progress-cell > strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  text-align: right;
+}
+
+.book-progress {
+  height: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  border-radius: 999px;
+  background: #e7f8ef;
+}
+
+.book-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #16a34a, #0f766e);
 }
 
 .bottom-text,
@@ -682,6 +819,15 @@ h3 {
 
   .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .book-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .book-head {
+    display: none;
   }
 
   .dictionary-tools {
